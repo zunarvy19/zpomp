@@ -1,0 +1,13 @@
+[
+
+  {
+    "id" : 1,
+    "title" : "Pengeboran Sumur Dalam",
+    "description" : "Layanan pengeboran untuk rumah tangga & industri dengan kedalaman hingga 100 meter"
+  },
+  {
+    "id" : 2,
+    "title": "Service dan Maintenance Pompa Air, Water Heater, dan lain-lain",
+    "description": "Service dan perawatan secara berkala"
+  }
+]
