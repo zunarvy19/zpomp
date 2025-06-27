@@ -15,7 +15,7 @@ export const metadata: Metadata = {
     template: "%s | Zunaidi Pompa", 
   },
   description: "Zunaidi Pompa: Ahli jasa bor sumur, service pompa air, dan instalasi pipa di Depok, Jakarta, Bogor. Solusi cepat dan profesional untuk masalah air bersih Anda.",
-  metadataBase: new URL("https://www.zunaidipompa.com"), // Ganti dengan URL domain Anda nanti
+  metadataBase: new URL("https://www.zunaidipompa.vercel.app"), // Ganti dengan URL domain Anda nanti
   
   // ## TAG SEO TAMBAHAN ##
   keywords: ["bor sumur jakarta selatan", "service pompa air jakarta selatan", "jasa instalasi pipa", "tukang ledeng jakarta selatan", "solusi air bersih", "bor sumur artesis", "service pompa air profesional"],
@@ -31,7 +31,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Zunaidi Pompa | Jasa Bor Sumur & Service Pompa Air",
     description: "Solusi cepat dan profesional untuk semua masalah air Anda di area Depok dan Jakarta Selatan",
-    url: "https://www.zunaidipompa.com", 
+    url: "https://www.zunaidipompa.vercel.app", 
     siteName: "Zunaidi Pompa",
     images: [
       {
