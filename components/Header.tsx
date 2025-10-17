@@ -1,7 +1,22 @@
-import Link from 'next/link';
-import { Phone } from 'lucide-react';
+"use client";
+import Link from "next/link";
+import { Phone } from "lucide-react";
 
+declare global {
+  interface Window {
+    gtag: (...args: unknown[]) => void;
+  }
+}
 export default function Header() {
+  const handleClickWhatsApp = () => {
+    if (typeof window !== "undefined" && window.gtag) {
+      window.gtag("event", "ads_conversion_WhatsApp_Navbar", {
+        method: "whatsapp",
+        value: 1,
+      });
+    }
+  };
+
   return (
     <nav className="bg-white/80 backdrop-blur-md shadow-md sticky top-0 z-50">
       <div className="container mx-auto px-6 py-4 flex justify-between items-center">
@@ -9,13 +24,21 @@ export default function Header() {
           Zunaidi Pompa
         </Link>
         <div className="hidden md:flex items-center space-x-6">
-          <Link href="#layanan" className="text-gray-600 hover:text-blue-600">Layanan</Link>
-          <Link href="#keunggulan" className="text-gray-600 hover:text-blue-600">Keunggulan</Link>
-          <Link href="#galeri" className="text-gray-600 hover:text-blue-600">Galeri</Link>
+          <Link href="#layanan" className="text-gray-600 hover:text-blue-600">
+            Layanan
+          </Link>
+          <Link href="#keunggulan" className="text-gray-600 hover:text-blue-600">
+            Keunggulan
+          </Link>
+          <Link href="#galeri" className="text-gray-600 hover:text-blue-600">
+            Galeri
+          </Link>
         </div>
         <a
           href="https://wa.me/62818970473?text=Halo%20Zunaidi%20Pompa"
           target="_blank"
+          rel="noopener noreferrer"
+          onClick={handleClickWhatsApp}
           className="bg-green-500 text-white font-bold py-2 px-4 rounded-lg hover:bg-green-600 transition-colors flex items-center gap-2"
         >
           <Phone size={18} />

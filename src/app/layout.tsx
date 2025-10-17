@@ -25,18 +25,11 @@ export const metadata: Metadata = {
     "bor sumur artesis",
     "service pompa air profesional",
   ],
-  authors: [{ name: "Zunaidi Pompa" }],
-  creator: "Zunaidi Pompa",
-  publisher: "Zunaidi Pompa",
-  robots: {
-    index: true,
-    follow: true,
-  },
   openGraph: {
     title: "Zunaidi Pompa | Jasa Bor Sumur & Service Pompa Air",
     description:
       "Solusi cepat dan profesional untuk semua masalah air Anda di area Depok dan Jakarta Selatan",
-    url: "https://www.zunaidipompa.vercel.app",
+    url: "https://zunaidipompa.vercel.app",
     siteName: "Zunaidi Pompa",
     images: [
       {
@@ -66,7 +59,6 @@ export const metadata: Metadata = {
   },
 };
 
-
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="id" className={jakarta.className}>
@@ -84,8 +76,16 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             gtag('config', 'AW-344369850');
           `}
         </Script>
+
+        {/* Conversion Event Example */}
+        <Script id="google-ads-conversion" strategy="afterInteractive">
+          {`
+            window.gtag = window.gtag || function(){dataLayer.push(arguments);};
+            gtag('event', 'ads_conversion_Tentang_Kami_Halaman_1');
+          `}
+        </Script>
       </head>
       <body>{children}</body>
     </html>
-  )
+  );
 }
