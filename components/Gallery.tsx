@@ -1,8 +1,4 @@
-// components/Gallery.tsx
-
-import * as React from "react";
 import Image from "next/image";
-
 import { Card, CardContent } from "@/components/ui/card";
 import {
   Carousel,
@@ -16,65 +12,84 @@ const galleryImages = [
   {
     src: "/images/proyek-bor-sumur-1.jpg",
     alt: "Proyek pengeboran sumur oleh Zunaidi Pompa",
+    caption: "Pengeboran Sumur Dalam",
   },
   {
     src: "/images/servis-pompa-jetpump.jpg",
     alt: "Proses servis pompa air jetpump",
+    caption: "Service Pompa Jetpump",
   },
   {
     src: "/images/pemasangan-pompa-baru.jpg",
     alt: "Instalasi pompa air baru untuk pelanggan",
+    caption: "Instalasi Pompa Baru",
   },
   {
     src: "/images/proyek-perumahan.jpg",
     alt: "Proyek instalasi air di sebuah perumahan",
+    caption: "Proyek Perumahan",
   },
   {
     src: "/images/pemasangan-part-pompa.jpg",
     alt: "Tim Zunaidi Pompa siap melayani",
+    caption: "Pemasangan Komponen",
   },
 ];
 
 export default function Gallery() {
   return (
-    <section id="galeri" className="container mx-auto px-6 py-16">
-      <div className="text-center mb-12">
-        <h3 className="text-3xl font-bold">Galeri Proyek Kami</h3>
-        <p className="text-gray-600 mt-2">
-          Bukti nyata dari pekerjaan berkualitas yang kami berikan.
-        </p>
-      </div>
+    <section id="galeri" className="py-20 bg-muted/50">
+      <div className="container mx-auto px-6">
+        {/* Header */}
+        <div className="max-w-2xl mb-12">
+          <p className="section-heading">Galeri Proyek</p>
+          <h2 className="text-3xl md:text-4xl font-bold mb-4">
+            Dokumentasi Pekerjaan Kami
+          </h2>
+          <p className="text-muted-foreground text-lg">
+            Bukti nyata dari kualitas pengerjaan yang kami berikan kepada
+            pelanggan.
+          </p>
+        </div>
 
-      <div className="flex justify-center">
+        {/* Carousel */}
         <Carousel
           opts={{
             align: "start",
-            loop: true, 
+            loop: true,
           }}
-          className="w-full max-w-4xl" 
+          className="w-full"
         >
-          <CarouselContent>
-          
+          <CarouselContent className="-ml-4">
             {galleryImages.map((image, index) => (
-              <CarouselItem key={index} className="md:basis-1/2 lg:basis-1/3">
-                <div className="p-1">
-                  <Card className="overflow-hidden">
-                    <CardContent className="flex aspect-video items-center justify-center p-0">
+              <CarouselItem
+                key={index}
+                className="pl-4 md:basis-1/2 lg:basis-1/3"
+              >
+                <Card className="overflow-hidden border-border">
+                  <CardContent className="p-0">
+                    <div className="relative aspect-[4/3]">
                       <Image
                         src={image.src}
                         alt={image.alt}
-                        width={400}
-                        height={400}
-                        className="w-full h-full object-cover transition-transform hover:scale-105"
+                        fill
+                        className="object-cover"
                       />
-                    </CardContent>
-                  </Card>
-                </div>
+                    </div>
+                    <div className="p-4 bg-card">
+                      <p className="font-medium text-foreground">
+                        {image.caption}
+                      </p>
+                    </div>
+                  </CardContent>
+                </Card>
               </CarouselItem>
             ))}
           </CarouselContent>
-          <CarouselPrevious className="hidden sm:flex" />
-          <CarouselNext className="hidden sm:flex" />
+          <div className="flex items-center justify-end gap-2 mt-6">
+            <CarouselPrevious className="static translate-y-0 rounded-lg border-border hover:bg-muted" />
+            <CarouselNext className="static translate-y-0 rounded-lg border-border hover:bg-muted" />
+          </div>
         </Carousel>
       </div>
     </section>

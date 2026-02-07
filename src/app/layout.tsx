@@ -85,7 +85,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           `}
         </Script>
       </head>
-      <body>{children}</body>
+      <body className="antialiased selection:bg-primary/20 selection:text-primary">
+        {children}
+      </body>
     </html>
   );
 }

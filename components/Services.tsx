@@ -1,41 +1,94 @@
-// components/Services.tsx
-import { Wrench, Droplet, ShowerHead, DropletOff } from 'lucide-react';
+import { Wrench, Droplet, Pipette, Filter, Settings, Gauge } from "lucide-react";
 
 export default function Services() {
+  const services = [
+    {
+      icon: Droplet,
+      title: "Pengeboran Sumur",
+      desc: "Pengeboran sumur dalam (deep well) untuk sumber air bersih yang melimpah. Kedalaman hingga 100 meter.",
+      tags: ["Rumah Tangga", "Industri"],
+    },
+    {
+      icon: Wrench,
+      title: "Perbaikan Pompa",
+      desc: "Perbaikan semua merek pompa air: Jet Pump, Submersible, Centrifugal. Diagnosa akurat, solusi cepat.",
+      tags: ["Jet Pump", "Submersible"],
+    },
+    {
+      icon: Pipette,
+      title: "Instalasi Pipa",
+      desc: "Perancangan dan pemasangan jalur pipa air baru yang efisien untuk rumah atau gedung komersial.",
+      tags: ["Rumah", "Komersial"],
+    },
+    {
+      icon: Filter,
+      title: "Filter Penjernih",
+      desc: "Solusi untuk air keruh, kuning, atau berbau. Tabung filter berkualitas tinggi untuk kesehatan keluarga.",
+      tags: ["Air Bersih", "Sehat"],
+    },
+    {
+      icon: Settings,
+      title: "Maintenance Rutin",
+      desc: "Perawatan berkala sistem air untuk mencegah kerusakan dan memastikan performa optimal.",
+      tags: ["Preventif", "Terjadwal"],
+    },
+    {
+      icon: Gauge,
+      title: "Konsultasi Teknis",
+      desc: "Analisis kebutuhan sistem air Anda. Rekomendasi solusi yang tepat sesuai kondisi dan budget.",
+      tags: ["Gratis", "Profesional"],
+    },
+  ];
+
   return (
-    <section id="layanan" className="container mx-auto py-16">
-      <div className="text-center mb-12">
-        <h3 className="text-3xl font-bold">Layanan Andalan Kami</h3>
-        <p className="text-gray-600 mt-2">Fokus kami adalah memberikan hasil terbaik untuk kebutuhan air Anda.</p>
-      </div>
-      <div className="grid md:grid-cols-2 gap-8">
-        <div className="bg-white p-8 rounded-lg shadow-lg text-center transition-transform hover:-translate-y-2">
-          <Droplet className="mx-auto text-blue-500" size={48} />
-          <h4 className="text-2xl font-bold mt-4">Jasa Bor Sumur</h4>
-          <p className="mt-2 text-gray-600">
-            Pengeboran sumur dalam untuk perumahan dan industri dengan peralatan proper untuk mendapatkan sumber air bersih.
+    <section id="layanan" className="py-20 bg-muted/50">
+      <div className="container mx-auto px-6">
+        {/* Header */}
+        <div className="max-w-2xl mb-12">
+          <p className="section-heading">Layanan Kami</p>
+          <h2 className="text-3xl md:text-4xl font-bold mb-4">
+            Sistem Air yang Kami Tangani
+          </h2>
+          <p className="text-muted-foreground text-lg">
+            Dari pengeboran hingga perawatan rutin. Solusi lengkap untuk kebutuhan air rumah tangga dan industri.
           </p>
         </div>
-        <div className="bg-white p-8 rounded-lg shadow-lg text-center transition-transform hover:-translate-y-2">
-          <Wrench className="mx-auto text-blue-500" size={48} />
-          <h4 className="text-2xl font-bold mt-4">Service Pompa Air</h4>
-          <p className="mt-2 text-gray-600">
-            Perbaikan dan perawatan semua merk pompa air. Mengatasi masalah air kecil, pompa mati total, atau suara berisik.
-          </p>
-        </div>
-        <div className="bg-white p-8 rounded-lg shadow-lg text-center transition-transform hover:-translate-y-2">
-          <ShowerHead className="mx-auto text-blue-500" size={48} />
-          <h4 className="text-2xl font-bold mt-4">Pemasangan Saluran Air</h4>
-          <p className="mt-2 text-gray-600">
-            Mengerjakan instalasi pipa baru, memperbaiki kebocoran, dan mengatasi semua masalah kualitas & tekanan air di properti Anda.
-          </p>
-        </div>
-        <div className="bg-white p-8 rounded-lg shadow-lg text-center transition-transform hover:-translate-y-2">
-          <DropletOff className="mx-auto text-blue-500" size={48} />
-          <h4 className="text-2xl font-bold mt-4">Solusi Saluran Air</h4>
-          <p className="mt-2 text-gray-600">
-            Instalasi & perbaikan pipa profesional. Solusi cepat untuk saluran bocor, air keruh, dan debit air kecil.
-          </p>
+
+        {/* Service Grid */}
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {services.map((service, idx) => {
+            const IconComponent = service.icon;
+            return (
+              <div
+                key={idx}
+                className="data-card group"
+              >
+                <div className="flex items-start gap-4">
+                  <div className="p-3 rounded-lg bg-primary/10 text-primary shrink-0">
+                    <IconComponent className="h-6 w-6" strokeWidth={1.5} />
+                  </div>
+                  <div className="flex-1">
+                    <h3 className="font-semibold text-lg mb-2 group-hover:text-primary transition-colors">
+                      {service.title}
+                    </h3>
+                    <p className="text-muted-foreground text-sm leading-relaxed mb-3">
+                      {service.desc}
+                    </p>
+                    <div className="flex flex-wrap gap-2">
+                      {service.tags.map((tag, tagIdx) => (
+                        <span
+                          key={tagIdx}
+                          className="text-xs px-2 py-1 bg-secondary text-secondary-foreground rounded"
+                        >
+                          {tag}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+              </div>
+            );
+          })}
         </div>
       </div>
     </section>
