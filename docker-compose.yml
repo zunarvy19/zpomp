@@ -1,4 +1,4 @@
-version: '3.9'
+version: "3.9"
 
 services:
   zpomp:
@@ -7,4 +7,6 @@ services:
     ports:
       - "3000:80"
     restart: unless-stopped
-
+    networks:
+      - shared_pg_network
+      - shared_net
