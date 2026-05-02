@@ -7,14 +7,14 @@ RUN npm install
 COPY . .
 RUN npm run build
 
-# Production stage
+# Production stage (serve static)
 FROM node:20-alpine
 
 WORKDIR /app
-COPY --from=builder /app ./
+RUN npm install -g serve
 
-ENV NODE_ENV=production
+COPY --from=builder /app/out ./out
 
 EXPOSE 3000
 
-CMD ["npm", "run", "start"]
+CMD ["serve", "-s", "out", "-l", "3000"]
