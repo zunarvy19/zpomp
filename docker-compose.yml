@@ -8,5 +8,4 @@ services:
       - "3000:80"
     restart: unless-stopped
     networks:
-      - shared_pg_network
       - shared_net
