@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { Droplet, Wrench, ShowerHead, DropletOff, ArrowRight } from "lucide-react";
+import { Droplet, Wrench, ShowerHead, DropletOff } from "lucide-react";
 
 const services = [
   {

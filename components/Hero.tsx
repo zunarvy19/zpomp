@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { MessageCircle, Phone, ShieldCheck, MapPin, Wrench } from "lucide-react";
+import { MessageCircle, Phone, ShieldCheck, Wrench } from "lucide-react";
 
 const trustPoints = [
   { icon: MessageCircle, label: "Survey Gratis" },

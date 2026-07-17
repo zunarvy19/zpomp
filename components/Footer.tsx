@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { Facebook, Instagram, MessageCircle, MapPin, Phone, Mail, Clock } from "lucide-react";
+
 
 const layanan = ["Jasa Bor Sumur", "Service Pompa Air", "Pemasangan Saluran Air", "Solusi Saluran Air"];
 const informasi = ["Tentang Kami", "Proyek", "Testimoni", "FAQ"];
