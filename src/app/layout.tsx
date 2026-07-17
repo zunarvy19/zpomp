@@ -33,7 +33,7 @@ export const metadata: Metadata = {
     siteName: "Zunaidi Pompa",
     images: [
       {
-        url: "/favicon.ico",
+        url: "/favicon.png",
         width: 1200,
         height: 630,
         alt: "Zunaidi Pompa - Layanan Bor Sumur dan Service Pompa Air",
@@ -51,7 +51,7 @@ export const metadata: Metadata = {
   },
   icons: {
     icon: [
-      { url: "/favicon.ico" },
+      { url: "/favicon.png" },
       { url: "/favicon-16x16.png", sizes: "16x16" },
       { url: "/favicon-32x32.png", sizes: "32x32" },
     ],

@@ -1,9 +1,5 @@
-// components/Gallery.tsx
-
-import * as React from "react";
 import Image from "next/image";
-
-import { Card, CardContent } from "@/components/ui/card";
+import Link from "next/link";
 import {
   Carousel,
   CarouselContent,
@@ -13,70 +9,49 @@ import {
 } from "@/components/ui/carousel";
 
 const galleryImages = [
-  {
-    src: "/images/proyek-bor-sumur-1.jpg",
-    alt: "Proyek pengeboran sumur oleh Zunaidi Pompa",
-  },
-  {
-    src: "/images/servis-pompa-jetpump.jpg",
-    alt: "Proses servis pompa air jetpump",
-  },
-  {
-    src: "/images/pemasangan-pompa-baru.jpg",
-    alt: "Instalasi pompa air baru untuk pelanggan",
-  },
-  {
-    src: "/images/proyek-perumahan.jpg",
-    alt: "Proyek instalasi air di sebuah perumahan",
-  },
-  {
-    src: "/images/pemasangan-part-pompa.jpg",
-    alt: "Tim Zunaidi Pompa siap melayani",
-  },
+  { src: "/images/proyek-bor-sumur-1.jpg", tag: "Service Pompa", title: "Perbaikan Jet Pump Panasonic Bekasi" },
+  { src: "/images/servis-pompa-jetpump.jpg", tag: "Bor Sumur", title: "Pengeboran Sumur 60 Meter Depok" },
+  { src: "/images/pemasangan-pompa-baru.jpg", tag: "Instalasi Pipa", title: "Instalasi Pipa Air Bersih Tangerang" },
+  { src: "/images/proyek-perumahan.jpg", tag: "Instalasi Pipa", title: "Perbaikan Pipa Bocor Jakarta Timur" },
+  { src: "/images/pemasangan-part-pompa.jpg", tag: "Perbaikan Pipa", title: "Service Pompa Submersible Bogor" },
 ];
 
 export default function Gallery() {
   return (
     <section id="galeri" className="container mx-auto px-6 py-16">
-      <div className="text-center mb-12">
-        <h3 className="text-3xl font-bold">Galeri Proyek Kami</h3>
-        <p className="text-gray-600 mt-2">
-          Bukti nyata dari pekerjaan berkualitas yang kami berikan.
-        </p>
+      <div className="flex items-center justify-between mb-8">
+        <div>
+          <h3 className="text-3xl font-bold">Proyek Terbaru Kami</h3>
+        </div>
+        <Link href="#galeri" className="hidden sm:inline text-sm font-semibold text-blue-600">
+          Lihat Semua Proyek →
+        </Link>
       </div>
 
-      <div className="flex justify-center">
-        <Carousel
-          opts={{
-            align: "start",
-            loop: true, 
-          }}
-          className="w-full max-w-4xl" 
-        >
-          <CarouselContent>
-          
-            {galleryImages.map((image, index) => (
-              <CarouselItem key={index} className="md:basis-1/2 lg:basis-1/3">
-                <div className="p-1">
-                  <Card className="overflow-hidden">
-                    <CardContent className="flex aspect-video items-center justify-center p-0">
-                      <Image
-                        src={image.src}
-                        alt={image.alt}
-                        width={400}
-                        height={400}
-                        className="w-full h-full object-cover transition-transform hover:scale-105"
-                      />
-                    </CardContent>
-                  </Card>
+      <Carousel opts={{ align: "start", loop: true }} className="w-full">
+        <CarouselContent>
+          {galleryImages.map((item, index) => (
+            <CarouselItem key={index} className="sm:basis-1/2 md:basis-1/3 lg:basis-1/4">
+              <div className="rounded-lg overflow-hidden shadow-sm group">
+                <div className="relative aspect-[4/3]">
+                  <Image
+                    src={item.src}
+                    alt={item.title}
+                    fill
+                    className="object-cover transition-transform group-hover:scale-105"
+                  />
+                  <span className="absolute top-3 left-3 bg-black/70 text-white text-xs font-medium px-2 py-1 rounded">
+                    {item.tag}
+                  </span>
                 </div>
-              </CarouselItem>
-            ))}
-          </CarouselContent>
-          <CarouselPrevious className="hidden sm:flex" />
-          <CarouselNext className="hidden sm:flex" />
-        </Carousel>
-      </div>
+                <p className="text-sm font-medium py-2">{item.title}</p>
+              </div>
+            </CarouselItem>
+          ))}
+        </CarouselContent>
+        <CarouselPrevious className="hidden sm:flex" />
+        <CarouselNext className="hidden sm:flex" />
+      </Carousel>
     </section>
   );
 }
