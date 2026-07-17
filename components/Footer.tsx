@@ -16,11 +16,11 @@ export default function Footer() {
             Melayani jasa bor sumur, service pompa air, perbaikan saluran air, dan solusi air bersih
             untuk rumah, bisnis, dan industri.
           </p>
-          <div className="flex gap-3 mt-4">
+          {/* <div className="flex gap-3 mt-4">
             <Facebook size={18} />
             <Instagram size={18} />
             <MessageCircle size={18} />
-          </div>
+          </div> */}
         </div>
 
         <div>
@@ -41,18 +41,17 @@ export default function Footer() {
           </ul>
         </div>
 
-        <div>
+        {/* <div>
           <p className="font-semibold text-white mb-3">Kontak Kami</p>
           <ul className="space-y-3 text-sm">
             <li className="flex items-start gap-2">
               <MapPin size={16} className="mt-0.5 flex-shrink-0" />
               Jl. Raya Pengasinan No. 123, Kec. Sawangan, Depok, Jawa Barat
             </li>
-            <li className="flex items-center gap-2"><Phone size={16} /> 0812-3456-7890</li>
-            <li className="flex items-center gap-2"><Mail size={16} /> zunaidipompa@gmail.com</li>
+            <li className="flex items-center gap-2"><Phone size={16} /> 0818-970-473</li>
             <li className="flex items-center gap-2"><Clock size={16} /> Senin - Sabtu, 08.00 - 17.00</li>
           </ul>
-        </div>
+        </div> */}
       </div>
 
       <div className="container mx-auto px-6 pb-6">

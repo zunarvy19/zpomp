@@ -1,5 +1,6 @@
 "use client";
 import Link from "next/link";
+import Image from "next/image";
 import { MessageCircle } from "lucide-react";
 
 declare global {
@@ -11,8 +12,6 @@ declare global {
 const navLinks = [
   { href: "#hero", label: "Beranda" },
   { href: "#layanan", label: "Layanan" },
-  { href: "#keunggulan", label: "Tentang Kami" },
-  { href: "#galeri", label: "Proyek" },
   { href: "#testimoni", label: "Testimoni" },
   { href: "#kontak", label: "Kontak" },
 ];
@@ -30,9 +29,18 @@ export default function Header() {
   return (
     <nav className="bg-white/90 backdrop-blur-md shadow-sm sticky top-0 z-50">
       <div className="container mx-auto px-6 py-3 flex justify-between items-center">
-        <Link href="#hero" className="flex flex-col leading-tight">
-          <span className="text-xl font-bold text-blue-700">ZUNAIDI POMPA</span>
-          <span className="text-xs text-gray-500">Jasa Bor Sumur & Service Pompa Air</span>
+        <Link href="#hero" className="flex items-center gap-3">
+          <Image
+            src="/images/zp-logo.png"
+            alt="Zunaidi Pompa Logo"
+            width={40}
+            height={40}
+            className="rounded-lg"
+          />
+          <div className="flex flex-col leading-tight">
+            <span className="text-xl font-bold text-blue-700">ZUNAIDI POMPA</span>
+            <span className="text-xs text-gray-500">Jasa Bor Sumur & Service Pompa Air</span>
+          </div>
         </Link>
 
         <div className="hidden md:flex items-center gap-8">

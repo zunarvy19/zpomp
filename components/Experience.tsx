@@ -53,12 +53,12 @@ export default function Services() {
             <div className="p-5 pt-7">
               <h4 className="font-bold text-lg">{title}</h4>
               <p className="text-sm text-gray-600 mt-2">{description}</p>
-              <a
+              {/* <a
                 href="#kontak"
                 className="mt-4 inline-flex items-center gap-1 text-sm font-semibold text-blue-600 hover:gap-2 transition-all"
               >
                 Selengkapnya <ArrowRight size={14} />
-              </a>
+              </a> */}
             </div>
           </div>
         ))}
