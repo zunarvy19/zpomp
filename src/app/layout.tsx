@@ -16,7 +16,7 @@ export const metadata: Metadata = {
   },
   description:
     "Zunaidi Pompa: Ahli jasa bor sumur, service pompa air, dan instalasi pipa di Depok, Jakarta, Bogor. Solusi cepat dan profesional untuk masalah air bersih Anda.",
-  metadataBase: new URL("https://zunaidipompa.vercel.app"),
+  metadataBase: new URL("https://zunaidipompa.zvy.my.id"),
   keywords: [
     "bor sumur jakarta selatan",
     "service pompa air jakarta selatan",
@@ -30,7 +30,7 @@ export const metadata: Metadata = {
     title: "Zunaidi Pompa | Jasa Bor Sumur & Service Pompa Air",
     description:
       "Solusi cepat dan profesional untuk semua masalah air Anda di area Depok dan Jakarta Selatan",
-    url: "https://zunaidipompa.vercel.app",
+    url: "https://zunaidipompa.zvy.my.id",
     siteName: "Zunaidi Pompa",
     images: [
       {
@@ -48,7 +48,7 @@ export const metadata: Metadata = {
     title: "Zunaidi Pompa | Ahli Bor Sumur & Service Pompa Air",
     description:
       "Solusi cepat dan profesional untuk masalah air Anda di area Depok dan Jakarta Selatan",
-    images: ["/og-image.ico"],
+    images: ["/images/og-image.png"],
   },
   icons: {
     icon: "/images/zp-logo.png",
@@ -72,6 +72,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             gtag('js', new Date());
             gtag('config', 'G-GM7C7EJKEK');
             gtag('config', 'AW-344369850');
+            gtag('config', 'AW-344369850/18KrCPD2jdIcELrVmqQB', {
+              phone_conversion_number: '0818970473'
+            });
           `}
         </Script>
       </head>

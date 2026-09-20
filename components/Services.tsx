@@ -1,5 +1,6 @@
 import Image from "next/image";
-import { Droplet, Wrench, ShowerHead, DropletOff } from "lucide-react";
+import Link from "next/link";
+import { ArrowRight, Droplet, Wrench, ShowerHead, DropletOff } from "lucide-react";
 
 const services = [
   {
@@ -15,6 +16,7 @@ const services = [
     title: "Service Pompa Air",
     description:
       "Perbaikan dan perawatan semua merk pompa air seperti Jet Pump, Shimizu, Sanyo, Panasonic, Grundfos, dan lainnya.",
+    href: "/service-pompa/depok",
   },
   {
     icon: ShowerHead,
@@ -42,7 +44,7 @@ export default function Services() {
       </div>
 
       <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
-        {services.map(({ icon: Icon, image, title, description }) => (
+        {services.map(({ icon: Icon, image, title, description, href }) => (
           <div key={title} className="bg-white rounded-xl shadow-sm overflow-hidden group">
             <div className="relative h-40 w-full">
               <Image src={image} alt={title} fill className="object-cover" />
@@ -53,12 +55,14 @@ export default function Services() {
             <div className="p-5 pt-7">
               <h4 className="font-bold text-lg">{title}</h4>
               <p className="text-sm text-gray-600 mt-2">{description}</p>
-              {/* <a
-                href="#kontak"
-                className="mt-4 inline-flex items-center gap-1 text-sm font-semibold text-blue-600 hover:gap-2 transition-all"
-              >
-                Selengkapnya <ArrowRight size={14} />
-              </a> */}
+              {href && (
+                <Link
+                  href={href}
+                  className="mt-4 inline-flex items-center gap-1 text-sm font-semibold text-blue-600 transition-all hover:gap-2"
+                >
+                  Lihat layanan <ArrowRight size={14} />
+                </Link>
+              )}
             </div>
           </div>
         ))}
