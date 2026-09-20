@@ -1,4 +1,7 @@
+"use client";
+
 import { Phone } from "lucide-react";
+import { trackContactClick } from "@/lib/analytics";
 
 export default function CTA() {
   return (
@@ -15,6 +18,7 @@ export default function CTA() {
             href="https://wa.me/62818970473?text=Halo%20Zunaidi%20Pompa,%20saya%20siap%20menggunakan%20jasa%20Anda."
             target="_blank"
             rel="noopener noreferrer"
+            onClick={() => trackContactClick("whatsapp", "cta")}
             className="bg-green-500 hover:bg-green-600 transition-colors rounded-lg px-6 py-3 flex items-center gap-2 font-semibold"
           >
                   <svg
@@ -32,6 +36,7 @@ export default function CTA() {
 
           <a
             href="tel:0818970473"
+            onClick={() => trackContactClick("phone", "cta")}
             className="bg-white text-gray-800 hover:bg-gray-100 transition-colors rounded-lg px-6 py-3 flex items-center gap-2 font-semibold"
           >
             <Phone size={20} className="text-blue-600" />

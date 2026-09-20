@@ -51,7 +51,7 @@ export const metadata: Metadata = {
     images: ["/og-image.ico"],
   },
   icons: {
-    icon: "/favicon.png",
+    icon: "/images/zp-logo.png",
   },
 };
 
@@ -59,40 +59,19 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="id" className={jakarta.className}>
       <head>
-        {/* Google Tag Manager */}
-        <Script
-          strategy="afterInteractive"
-          src="https://www.googletagmanager.com/gtag/js?id=AW-344369850"
-        />
-        <Script id="google-analytics" strategy="afterInteractive">
-          {`
-            window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments);}
-            gtag('js', new Date());
-            gtag('config', 'AW-344369850');
-          `}
-        </Script>
-
-        {/* Conversion Event Example */}
-        <Script id="google-ads-conversion" strategy="afterInteractive">
-          {`
-            window.gtag = window.gtag || function(){dataLayer.push(arguments);};
-            gtag('event', 'ads_conversion_Tentang_Kami_Halaman_1');
-          `}
-        </Script>
-
-        {/* Google tag (gtag.js) */}
+        {/* One Google tag loader can configure both Google Ads and GA4. */}
         <Script
           strategy="afterInteractive"
           src="https://www.googletagmanager.com/gtag/js?id=G-GM7C7EJKEK"
         />
-        <Script id="google-analytics-2" strategy="afterInteractive">
+        <Script id="google-tag" strategy="afterInteractive">
           {`
             window.dataLayer = window.dataLayer || [];
             function gtag(){dataLayer.push(arguments);}
+            window.gtag = gtag;
             gtag('js', new Date());
-
             gtag('config', 'G-GM7C7EJKEK');
+            gtag('config', 'AW-344369850');
           `}
         </Script>
       </head>

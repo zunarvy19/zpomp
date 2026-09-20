@@ -1,9 +1,14 @@
+"use client";
+
+import { trackContactClick } from "@/lib/analytics";
+
 export default function FloatingWhatsApp() {
   return (
     <a
       href="https://wa.me/62818970473?text=Halo%20Zunaidi%20Pompa,%20saya%20ingin%20berkonsultasi."
       target="_blank"
       rel="noopener noreferrer"
+      onClick={() => trackContactClick("whatsapp", "floating")}
       className="fixed bottom-6 right-6 z-50 flex items-center justify-center p-4 text-white transition-all duration-300 bg-[#25D366] rounded-full shadow-lg hover:bg-[#20ba5a] hover:-translate-y-1 hover:shadow-xl animate-bounce-slow"
       aria-label="Chat via WhatsApp"
     >

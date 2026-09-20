@@ -1,5 +1,8 @@
+"use client";
+
 import Image from "next/image";
 import { MessageCircle, Phone, ShieldCheck, Wrench } from "lucide-react";
+import { trackContactClick } from "@/lib/analytics";
 
 const trustPoints = [
   { icon: MessageCircle, label: "Survey Gratis" },
@@ -47,6 +50,7 @@ export default function Hero() {
             href="https://wa.me/62818970473?text=Halo%20Zunaidi%20Pompa,%20saya%20ingin%20berkonsultasi."
             target="_blank"
             rel="noopener noreferrer"
+            onClick={() => trackContactClick("whatsapp", "hero")}
             className="bg-green-500 hover:bg-green-600 transition-colors rounded-lg px-6 py-3 flex items-center gap-3"
           >
                   <svg
@@ -67,6 +71,7 @@ export default function Hero() {
 
           <a
             href="tel:0818970473"
+            onClick={() => trackContactClick("phone", "hero")}
             className="bg-white text-gray-800 hover:bg-gray-100 transition-colors rounded-lg px-6 py-3 flex items-center gap-3"
           >
             <Phone size={22} className="text-blue-600" />

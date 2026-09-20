@@ -2,12 +2,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { MessageCircle } from "lucide-react";
-
-declare global {
-  interface Window {
-    gtag: (...args: unknown[]) => void;
-  }
-}
+import { trackContactClick } from "@/lib/analytics";
 
 const navLinks = [
   { href: "#hero", label: "Beranda" },
@@ -17,15 +12,6 @@ const navLinks = [
 ];
 
 export default function Header() {
-  const handleClickWhatsApp = () => {
-    if (typeof window !== "undefined" && window.gtag) {
-      window.gtag("event", "ads_conversion_WhatsApp_Navbar", {
-        method: "whatsapp",
-        value: 1,
-      });
-    }
-  };
-
   return (
     <nav className="bg-white/90 backdrop-blur-md shadow-sm sticky top-0 z-50">
       <div className="container mx-auto px-6 py-3 flex justify-between items-center">
@@ -59,7 +45,7 @@ export default function Header() {
           href="https://wa.me/62818970473?text=Halo%20Zunaidi%20Pompa"
           target="_blank"
           rel="noopener noreferrer"
-          onClick={handleClickWhatsApp}
+          onClick={() => trackContactClick("whatsapp", "navbar")}
           className="bg-green-500 text-white text-sm font-semibold py-2.5 px-5 rounded-lg hover:bg-green-600 transition-colors flex items-center gap-2"
         >
           <MessageCircle size={16} />
