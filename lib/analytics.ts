@@ -8,11 +8,11 @@ declare global {
 }
 
 const contactEvents: Record<ContactMethod, string> = {
-  // Keep the existing WhatsApp event name so the current Google Ads setup
-  // continues receiving the event from every WhatsApp button.
   whatsapp: "ads_conversion_WhatsApp_Navbar",
   phone: "ads_conversion_Phone_Click",
 };
+
+const whatsappAdsConversion = "AW-344369850/S-HaCMHXoYEdELrVmqQB";
 
 export function trackContactClick(
   method: ContactMethod,
@@ -27,4 +27,13 @@ export function trackContactClick(
     contact_method: method,
     link_placement: placement,
   });
+
+  if (method === "whatsapp") {
+    window.gtag("event", "conversion", {
+      send_to: whatsappAdsConversion,
+      event_category: "lead",
+      contact_method: method,
+      link_placement: placement,
+    });
+  }
 }
