@@ -71,13 +71,16 @@ export default function Hero() {
 
           <a
             href="tel:0818970473"
+            data-google-phone-link
             onClick={() => trackContactClick("phone", "hero")}
             className="bg-white text-gray-800 hover:bg-gray-100 transition-colors rounded-lg px-6 py-3 flex items-center gap-3"
           >
             <Phone size={22} className="text-blue-600" />
             <span className="text-left leading-tight">
               <span className="block font-bold">Telepon Sekarang</span>
-              <span className="block text-xs text-gray-500">0818-970-473</span>
+              <span data-google-phone-number className="block text-xs text-gray-500">
+                0818-970-473
+              </span>
             </span>
           </a>
         </div>

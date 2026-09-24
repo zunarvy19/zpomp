@@ -36,11 +36,12 @@ export default function CTA() {
 
           <a
             href="tel:0818970473"
+            data-google-phone-link
             onClick={() => trackContactClick("phone", "cta")}
             className="bg-white text-gray-800 hover:bg-gray-100 transition-colors rounded-lg px-6 py-3 flex items-center gap-2 font-semibold"
           >
             <Phone size={20} className="text-blue-600" />
-            0818-970-473
+            <span data-google-phone-number>0818-970-473</span>
           </a>
         </div>
       </div>

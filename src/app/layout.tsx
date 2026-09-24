@@ -73,7 +73,16 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             gtag('config', 'G-GM7C7EJKEK');
             gtag('config', 'AW-344369850');
             gtag('config', 'AW-344369850/18KrCPD2jdIcELrVmqQB', {
-              phone_conversion_number: '0818970473'
+              phone_conversion_number: '0818-970-473',
+              phone_conversion_callback: function(formattedNumber, mobileNumber) {
+                document.querySelectorAll('[data-google-phone-link]').forEach(function(link) {
+                  link.setAttribute('href', 'tel:' + mobileNumber);
+                });
+
+                document.querySelectorAll('[data-google-phone-number]').forEach(function(label) {
+                  label.textContent = formattedNumber;
+                });
+              }
             });
           `}
         </Script>

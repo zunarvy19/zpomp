@@ -3,6 +3,7 @@ export type ContactPlacement = "navbar" | "hero" | "cta" | "floating";
 
 declare global {
   interface Window {
+    dataLayer?: unknown[][];
     gtag?: (...args: unknown[]) => void;
   }
 }
@@ -14,22 +15,37 @@ const contactEvents: Record<ContactMethod, string> = {
 
 const whatsappAdsConversion = "AW-344369850/S-HaCMHXoYEdELrVmqQB";
 
+function getGoogleTag() {
+  if (typeof window === "undefined") {
+    return null;
+  }
+
+  window.dataLayer ??= [];
+  window.gtag ??= (...args: unknown[]) => {
+    window.dataLayer?.push(args);
+  };
+
+  return window.gtag;
+}
+
 export function trackContactClick(
   method: ContactMethod,
   placement: ContactPlacement,
 ) {
-  if (typeof window === "undefined" || !window.gtag) {
+  const gtag = getGoogleTag();
+
+  if (!gtag) {
     return;
   }
 
-  window.gtag("event", contactEvents[method], {
+  gtag("event", contactEvents[method], {
     event_category: "lead",
     contact_method: method,
     link_placement: placement,
   });
 
   if (method === "whatsapp") {
-    window.gtag("event", "conversion", {
+    gtag("event", "conversion", {
       send_to: whatsappAdsConversion,
       event_category: "lead",
       contact_method: method,

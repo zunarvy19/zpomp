@@ -89,11 +89,12 @@ export default function ServicePompaDepokLanding() {
               <div className="mt-8 flex flex-wrap gap-4">
                 <a
                   href="tel:0818970473"
+                  data-google-phone-link
                   onClick={() => trackContactClick("phone", "hero")}
                   className="inline-flex items-center gap-3 rounded-xl bg-blue-600 px-6 py-4 font-bold text-white shadow-lg shadow-blue-950/30 transition hover:bg-blue-500"
                 >
                   <Phone size={21} />
-                  Telepon 0818-970-473
+                  Telepon <span data-google-phone-number>0818-970-473</span>
                 </a>
                 <a
                   href={whatsappUrl}
@@ -241,6 +242,7 @@ export default function ServicePompaDepokLanding() {
             <div className="mt-8 flex flex-wrap justify-center gap-4">
               <a
                 href="tel:0818970473"
+                data-google-phone-link
                 onClick={() => trackContactClick("phone", "cta")}
                 className="inline-flex items-center gap-3 rounded-xl bg-white px-6 py-4 font-bold text-blue-700 hover:bg-blue-50"
               >
