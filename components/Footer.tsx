@@ -3,7 +3,6 @@ import Link from "next/link";
 
 const layanan = ["Jasa Bor Sumur", "Service Pompa Air", "Pemasangan Saluran Air", "Solusi Saluran Air"];
 const informasi = ["Tentang Kami", "Proyek", "Testimoni", "FAQ"];
-const area = ["Jakarta", "Bekasi", "Depok", "Tangerang", "Bogor"];
 
 export default function Footer() {
   return (
