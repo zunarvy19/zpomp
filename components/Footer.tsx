@@ -54,9 +54,9 @@ export default function Footer() {
         </div> */}
       </div>
 
-      <div className="container mx-auto px-6 pb-6">
+      {/* <div className="container mx-auto px-6 pb-6">
         <p className="text-xs text-gray-500">Area Layanan: {area.join(", ")}</p>
-      </div>
+      </div> */}
 
       <div className="border-t border-gray-800">
         <div className="container mx-auto px-6 py-4 flex flex-col md:flex-row justify-between text-xs text-gray-500">
