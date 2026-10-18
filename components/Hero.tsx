@@ -1,90 +1,132 @@
 "use client";
 
 import Image from "next/image";
-import { MessageCircle, Phone, ShieldCheck, Wrench } from "lucide-react";
+import { ArrowRight, Check, MessageCircle, Phone, ScanSearch } from "lucide-react";
+import { motion, useReducedMotion } from "framer-motion";
 import { trackContactClick } from "@/lib/analytics";
+import { revealMotion } from "@/lib/motion";
 
-const trustPoints = [
-  { icon: MessageCircle, label: "Survey Gratis" },
-  { icon: ShieldCheck, label: "Garansi Pekerjaan" },
-  { icon: Wrench, label: "Teknisi Berpengalaman" },
+const assurances = [
+  "Diagnosis sebelum tindakan",
+  "Estimasi dijelaskan di awal",
+  "Hasil pekerjaan diuji kembali",
 ];
 
 export default function Hero() {
+  const reduceMotion = Boolean(useReducedMotion());
+
   return (
-    <header id="hero" className="relative z-0 min-h-[560px] md:min-h-[640px] flex items-center">
-      <div className="absolute inset-0 -z-10">
-        <Image
-          src="/images/herro.png"
-          alt="Teknisi Zunaidi Pompa sedang bekerja"
-          fill
-          priority
-          className="object-cover"
-        />
-        <div className="absolute inset-0 bg-black/55" />
-      </div>
+    <section id="hero" className="relative overflow-hidden bg-[#F3F8FB]">
+      <div className="pointer-events-none absolute -left-40 top-32 h-80 w-80 rounded-full bg-[#27A9E1]/10 blur-3xl" />
+      <div className="pointer-events-none absolute right-0 top-0 h-full w-[42%] bg-gradient-to-b from-white/65 to-transparent" />
 
-      <div className="container mx-auto px-6 py-20 text-white">
-        <p className="text-sm font-semibold tracking-wide text-white/80 mb-3">
-          JASA BOR SUMUR & SERVICE POMPA AIR
-        </p>
-        <h2 className="text-4xl md:text-5xl font-extrabold leading-tight max-w-2xl">
-          Pompa Air Bermasalah? Kami Siap Membantu.
-        </h2>
-        <p className="mt-4 text-lg text-white/90 max-w-xl">
-          Melayani jasa bor sumur, service pompa air, perbaikan saluran air dan
-          solusi air bersih untuk rumah, bisnis, dan industri.
-        </p>
-
-        <div className="flex flex-wrap gap-6 mt-6 text-sm text-white/90">
-          {trustPoints.map(({ icon: Icon, label }) => (
-            <span key={label} className="flex items-center gap-2">
-              <Icon size={16} />
-              {label}
-            </span>
-          ))}
-        </div>
-
-        <div className="flex flex-wrap gap-4 mt-8">
-          <a
-            href="https://wa.me/62818970473?text=Halo%20Zunaidi%20Pompa,%20saya%20ingin%20berkonsultasi."
-            target="_blank"
-            rel="noopener noreferrer"
-            onClick={() => trackContactClick("whatsapp", "hero")}
-            className="bg-green-500 hover:bg-green-600 transition-colors rounded-lg px-6 py-3 flex items-center gap-3"
+      <div className="relative mx-auto grid min-h-[700px] max-w-7xl items-center gap-14 px-5 py-16 sm:px-6 lg:grid-cols-[1.06fr_0.94fr] lg:gap-20 lg:py-20">
+        <div className="max-w-3xl">
+          <motion.p
+            {...revealMotion("left", 0, reduceMotion)}
+            className="flex items-center gap-3 text-[11px] font-extrabold uppercase tracking-[0.22em] text-[#1479C9] sm:text-xs"
           >
-                  <svg
-        viewBox="0 0 24 24"
-        width="22"
-        height="22"
-        fill="currentColor"
-        className="w-8 h-8"
-      >
-        <path d="M17.498 14.382c-.301-.15-1.767-.867-2.04-.966-.273-.101-.473-.15-.673.15-.197.295-.771.964-.944 1.162-.175.195-.349.21-.646.075-.3-.15-1.263-.465-2.403-1.485-.888-.795-1.484-1.77-1.66-2.07-.174-.3-.019-.465.13-.615.136-.135.301-.345.451-.523.146-.181.194-.301.297-.496.098-.203.048-.382-.027-.532-.075-.15-.672-1.62-.922-2.206-.24-.584-.487-.51-.672-.51-.172-.015-.371-.015-.571-.015-.2 0-.523.074-.797.359-.273.3-1.045 1.02-1.045 2.475s1.07 2.865 1.219 3.075c.149.195 2.105 3.195 5.1 4.485.714.3 1.27.48 1.704.629.714.227 1.365.195 1.88.121.574-.091 1.767-.721 2.016-1.426.255-.705.255-1.29.18-1.425-.074-.135-.27-.21-.57-.345z"/>
-        <path d="M20.52 3.449C18.24 1.245 15.24 0 12.045 0 5.463 0 .104 5.334.101 11.893c0 2.096.549 4.14 1.595 5.945L0 24l6.335-1.652c1.746.943 3.71 1.444 5.71 1.447h.006c6.585 0 11.946-5.336 11.949-11.896 0-3.176-1.24-6.165-3.48-8.45zm-8.475 18.23h-.005c-1.77 0-3.51-.48-5.025-1.38l-.36-.21-3.735.975.99-3.63-.225-.36c-1.005-1.59-1.53-3.435-1.53-5.355 0-5.505 4.5-9.99 10.02-9.99 2.685 0 5.19 1.035 7.08 2.925 1.89 1.905 2.925 4.425 2.925 7.095 0 5.505-4.5 9.99-10.005 9.99z"/>
-      </svg>
-            <span className="text-left leading-tight">
-              <span className="block font-bold">Chat via WhatsApp</span>
-              <span className="block text-xs text-white/80">Respon cepat</span>
-            </span>
-          </a>
+            <span className="h-2 w-2 rounded-full bg-[#F59E0B]" />
+            Jasa pompa & sistem air
+          </motion.p>
 
-          <a
-            href="tel:0818970473"
-            data-google-phone-link=""
-            onClick={() => trackContactClick("phone", "hero")}
-            className="bg-white text-gray-800 hover:bg-gray-100 transition-colors rounded-lg px-6 py-3 flex items-center gap-3"
+          <motion.h1
+            {...revealMotion("left", 0.08, reduceMotion)}
+            className="mt-6 text-[2.7rem] font-extrabold leading-[1.03] tracking-[-0.055em] text-[#071C2E] sm:text-6xl lg:text-[4.25rem]"
           >
-            <Phone size={22} className="text-blue-600" />
-            <span className="text-left leading-tight">
-              <span className="block font-bold">Telepon Sekarang</span>
-              <span data-google-phone-number="" className="block text-xs text-gray-500">
-                0818-970-473
+            Air tidak mengalir
+            <span className="block text-[#1479C9]">seperti seharusnya?</span>
+          </motion.h1>
+
+          <motion.p
+            {...revealMotion("left", 0.16, reduceMotion)}
+            className="mt-7 max-w-2xl text-base leading-8 text-[#617080] sm:text-lg"
+          >
+            Kami menangani service pompa, bor sumur, dan instalasi air dengan
+            mencari sumber masalahnya lebih dulu—supaya tindakan yang diambil
+            benar-benar sesuai kebutuhan.
+          </motion.p>
+
+          <motion.div
+            {...revealMotion("up", 0.24, reduceMotion, 20)}
+            className="mt-8 flex flex-col gap-3 sm:flex-row"
+          >
+            <a
+              href="https://wa.me/62818970473?text=Halo%20Zunaidi%20Pompa,%20saya%20ingin%20konsultasi%20tentang%20masalah%20air."
+              target="_blank"
+              rel="noopener noreferrer"
+              onClick={() => trackContactClick("whatsapp", "hero")}
+              className="group inline-flex items-center justify-center gap-3 rounded-xl bg-[#1479C9] px-6 py-4 text-sm font-bold text-white transition-all hover:-translate-y-0.5 hover:bg-[#155F9C]"
+            >
+              <MessageCircle size={19} />
+              Ceritakan Masalah Anda
+              <ArrowRight size={17} className="transition-transform group-hover:translate-x-0.5" />
+            </a>
+
+            <a
+              href="tel:0818970473"
+              data-google-phone-link=""
+              onClick={() => trackContactClick("phone", "hero")}
+              className="inline-flex items-center justify-center gap-3 rounded-xl border border-[#0B2845]/15 bg-white px-6 py-4 text-sm font-bold text-[#0B2845] transition-colors hover:border-[#1479C9] hover:text-[#1479C9]"
+            >
+              <Phone size={18} />
+              <span data-google-phone-number="">0818-970-473</span>
+            </a>
+          </motion.div>
+
+          <motion.div
+            {...revealMotion("up", 0.32, reduceMotion, 18)}
+            className="mt-9 grid gap-3 border-t border-[#0B2845]/10 pt-6 sm:grid-cols-3"
+          >
+            {assurances.map((item) => (
+              <span key={item} className="flex items-start gap-2 text-xs font-semibold leading-5 text-[#31485C]">
+                <span className="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-[#DFF3FB] text-[#1479C9]">
+                  <Check size={11} strokeWidth={3} />
+                </span>
+                {item}
               </span>
-            </span>
-          </a>
+            ))}
+          </motion.div>
         </div>
+
+        <motion.div
+          {...revealMotion("right", 0.14, reduceMotion, 36)}
+          className="relative mx-auto w-full max-w-[560px] pb-12 lg:pb-8"
+        >
+          <div className="absolute -right-6 top-8 h-[88%] w-[82%] rounded-[2rem] bg-[#0B2845] sm:-right-8" />
+          <div className="absolute -right-12 top-0 hidden h-32 w-32 rounded-full border-[24px] border-[#27A9E1]/15 sm:block" />
+
+          <figure className="relative ml-auto aspect-[4/4.7] w-[90%] overflow-hidden rounded-[2rem] border-[6px] border-white bg-[#DFF3FB] shadow-[0_28px_70px_rgba(7,28,46,0.18)]">
+            <Image
+              src="/images/hero-technician-ai-v1.png"
+              alt="Ilustrasi teknisi sedang memeriksa instalasi pompa air rumah"
+              fill
+              priority
+              sizes="(max-width: 1024px) 90vw, 480px"
+              className="object-cover object-center"
+            />
+            <div className="absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-[#071C2E]/75 to-transparent" />
+            <figcaption className="absolute bottom-6 left-6 right-6 flex items-center justify-between gap-4 text-white">
+              <div>
+                <p className="text-[10px] font-bold uppercase tracking-[0.18em] text-[#8BD8F2]">Ilustrasi layanan</p>
+                <p className="mt-1 text-sm font-bold">Pemeriksaan pompa & instalasi air</p>
+              </div>
+              <ScanSearch size={23} className="shrink-0 text-[#F59E0B]" />
+            </figcaption>
+          </figure>
+
+          <motion.div
+            {...revealMotion("left", 0.42, reduceMotion, 20)}
+            className="absolute -left-1 top-10 max-w-[210px] rounded-2xl border border-[#DCE5EC] bg-white p-4 shadow-[0_18px_45px_rgba(7,28,46,0.12)] sm:-left-5 sm:p-5"
+          >
+            <span className="flex h-9 w-9 items-center justify-center rounded-xl bg-[#DFF3FB] text-[#1479C9]">
+              <ScanSearch size={18} />
+            </span>
+            <p className="mt-4 text-sm font-extrabold leading-5 text-[#071C2E]">Pengecekan, bukan tebakan.</p>
+            <p className="mt-1 text-[11px] leading-4 text-[#617080]">Mulai dari gejala yang Anda lihat.</p>
+          </motion.div>
+        </motion.div>
       </div>
-    </header>
+    </section>
   );
 }

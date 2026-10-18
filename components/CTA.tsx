@@ -1,50 +1,109 @@
 "use client";
 
-import { Phone } from "lucide-react";
+import { ArrowUpRight, Check, MessageCircle, Phone } from "lucide-react";
+import { motion, useReducedMotion } from "framer-motion";
 import { trackContactClick } from "@/lib/analytics";
+import { revealMotion } from "@/lib/motion";
+
+const assurances = [
+  "Pengecekan lebih dulu",
+  "Estimasi dijelaskan",
+  "Hasil diuji kembali",
+];
 
 export default function CTA() {
-  return (
-    <section id="kontak" className="bg-blue-600 text-white">
-      <div className="container mx-auto px-6 py-14 flex flex-col md:flex-row items-center justify-between gap-6">
-        <div className="text-center md:text-left">
-          <h3 className="text-2xl md:text-3xl font-bold">Masih Ada Masalah dengan Air Anda?</h3>
-          <p className="mt-2 text-blue-100 max-w-md">
-            Jangan biarkan masalah air mengganggu aktivitas Anda. Hubungi kami sekarang untuk solusi terbaik!
-          </p>
-        </div>
-        <div className="flex flex-wrap gap-4 justify-center">
-          <a
-            href="https://wa.me/62818970473?text=Halo%20Zunaidi%20Pompa,%20saya%20siap%20menggunakan%20jasa%20Anda."
-            target="_blank"
-            rel="noopener noreferrer"
-            onClick={() => trackContactClick("whatsapp", "cta")}
-            className="bg-green-500 hover:bg-green-600 transition-colors rounded-lg px-6 py-3 flex items-center gap-2 font-semibold"
-          >
-                  <svg
-        viewBox="0 0 24 24"
-        width="16"
-        height="16"
-        fill="currentColor"
-        className="w-8 h-8"
-      >
-        <path d="M17.498 14.382c-.301-.15-1.767-.867-2.04-.966-.273-.101-.473-.15-.673.15-.197.295-.771.964-.944 1.162-.175.195-.349.21-.646.075-.3-.15-1.263-.465-2.403-1.485-.888-.795-1.484-1.77-1.66-2.07-.174-.3-.019-.465.13-.615.136-.135.301-.345.451-.523.146-.181.194-.301.297-.496.098-.203.048-.382-.027-.532-.075-.15-.672-1.62-.922-2.206-.24-.584-.487-.51-.672-.51-.172-.015-.371-.015-.571-.015-.2 0-.523.074-.797.359-.273.3-1.045 1.02-1.045 2.475s1.07 2.865 1.219 3.075c.149.195 2.105 3.195 5.1 4.485.714.3 1.27.48 1.704.629.714.227 1.365.195 1.88.121.574-.091 1.767-.721 2.016-1.426.255-.705.255-1.29.18-1.425-.074-.135-.27-.21-.57-.345z"/>
-        <path d="M20.52 3.449C18.24 1.245 15.24 0 12.045 0 5.463 0 .104 5.334.101 11.893c0 2.096.549 4.14 1.595 5.945L0 24l6.335-1.652c1.746.943 3.71 1.444 5.71 1.447h.006c6.585 0 11.946-5.336 11.949-11.896 0-3.176-1.24-6.165-3.48-8.45zm-8.475 18.23h-.005c-1.77 0-3.51-.48-5.025-1.38l-.36-.21-3.735.975.99-3.63-.225-.36c-1.005-1.59-1.53-3.435-1.53-5.355 0-5.505 4.5-9.99 10.02-9.99 2.685 0 5.19 1.035 7.08 2.925 1.89 1.905 2.925 4.425 2.925 7.095 0 5.505-4.5 9.99-10.005 9.99z"/>
-      </svg>
-            Chat via WhatsApp
-          </a>
+  const reduceMotion = Boolean(useReducedMotion());
 
-          <a
-            href="tel:0818970473"
-            data-google-phone-link=""
-            onClick={() => trackContactClick("phone", "cta")}
-            className="bg-white text-gray-800 hover:bg-gray-100 transition-colors rounded-lg px-6 py-3 flex items-center gap-2 font-semibold"
+  return (
+    <section id="kontak" className="bg-white px-4 py-16 sm:px-6 md:py-24">
+      <motion.div
+        {...revealMotion("up", 0, reduceMotion, 24)}
+        className="relative mx-auto max-w-7xl overflow-hidden rounded-[2rem] bg-[#071C2E] px-6 py-8 text-white sm:px-10 sm:py-10 lg:px-14 lg:py-14"
+      >
+        <div className="pointer-events-none absolute -right-20 -top-44 h-[500px] w-[500px] rounded-full border-[72px] border-[#27A9E1]/10" />
+        <div className="pointer-events-none absolute -bottom-40 right-40 h-72 w-72 rounded-full bg-[#1479C9]/20 blur-3xl" />
+        <div className="pointer-events-none absolute left-[52%] top-0 hidden h-full w-px bg-gradient-to-b from-transparent via-white/10 to-transparent lg:block" />
+
+        <motion.div
+          {...revealMotion("none", 0.08, reduceMotion)}
+          className="relative flex items-center justify-between border-b border-white/10 pb-6"
+        >
+          <p className="flex items-center gap-3 text-[10px] font-extrabold uppercase tracking-[0.24em] text-[#8BD8F2] sm:text-xs">
+            <span className="h-2 w-2 rounded-full bg-[#F59E0B]" />
+            Langkah berikutnya
+          </p>
+          <span className="rounded-full border border-white/15 px-3 py-1 text-[10px] font-bold tracking-[0.18em] text-white/45">
+            07 / KONTAK
+          </span>
+        </motion.div>
+
+        <div className="relative grid gap-10 py-10 lg:grid-cols-[1.08fr_0.92fr] lg:items-center lg:gap-16 lg:py-14">
+          <motion.div {...revealMotion("left", 0.14, reduceMotion, 24)}>
+            <h2 className="max-w-2xl text-3xl font-extrabold leading-[1.08] tracking-[-0.045em] sm:text-5xl lg:text-[3.5rem]">
+              Masalah air belum selesai?
+              <span className="mt-2 block text-[#57C4EA]">Mulai dari gejalanya.</span>
+            </h2>
+            <p className="mt-6 max-w-xl text-sm leading-7 text-white/60 sm:text-base">
+              Tidak perlu menebak kerusakannya. Ceritakan kondisi pompa, aliran air,
+              dan lokasi Anda agar kami bisa mengarahkan pengecekan yang sesuai.
+            </p>
+          </motion.div>
+
+          <motion.div
+            {...revealMotion("right", 0.2, reduceMotion, 24)}
+            className="rounded-2xl border border-white/10 bg-white/[0.055] p-5 backdrop-blur-sm sm:p-7"
           >
-            <Phone size={20} className="text-blue-600" />
-            <span data-google-phone-number="">0818-970-473</span>
-          </a>
+            <div className="flex items-start justify-between gap-6">
+              <div>
+                <p className="text-xs font-bold uppercase tracking-[0.16em] text-[#8BD8F2]">Hubungi langsung</p>
+                <p className="mt-2 text-sm leading-6 text-white/55">Pilih cara yang paling nyaman untuk Anda.</p>
+              </div>
+              <ArrowUpRight size={22} className="shrink-0 text-[#F59E0B]" />
+            </div>
+
+            <div className="mt-6 grid gap-3">
+              <a
+                href="https://wa.me/62818970473?text=Halo%20Zunaidi%20Pompa,%20saya%20ingin%20konsultasi%20tentang%20masalah%20air."
+                target="_blank"
+                rel="noopener noreferrer"
+                onClick={() => trackContactClick("whatsapp", "cta")}
+                className="group flex items-center justify-between rounded-xl bg-[#1479C9] px-5 py-4 text-sm font-bold text-white transition-colors hover:bg-[#155F9C]"
+              >
+                <span className="flex items-center gap-3">
+                  <MessageCircle size={19} /> Konsultasi via WhatsApp
+                </span>
+                <ArrowUpRight size={17} className="transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
+              </a>
+
+              <a
+                href="tel:0818970473"
+                data-google-phone-link=""
+                onClick={() => trackContactClick("phone", "cta")}
+                className="flex items-center justify-between rounded-xl border border-white/15 px-5 py-4 text-sm font-bold text-white transition-colors hover:bg-white/[0.07]"
+              >
+                <span className="flex items-center gap-3">
+                  <Phone size={18} className="text-[#57C4EA]" /> Telepon
+                </span>
+                <span data-google-phone-number="" className="text-xs text-white/55">0818-970-473</span>
+              </a>
+            </div>
+          </motion.div>
         </div>
-      </div>
+
+        <motion.div
+          {...revealMotion("up", 0.28, reduceMotion, 16)}
+          className="relative grid gap-3 border-t border-white/10 pt-6 sm:grid-cols-3"
+        >
+          {assurances.map((item) => (
+            <span key={item} className="flex items-center gap-2 text-xs font-semibold text-white/55">
+              <span className="flex h-5 w-5 items-center justify-center rounded-full bg-[#27A9E1]/15 text-[#8BD8F2]">
+                <Check size={11} strokeWidth={3} />
+              </span>
+              {item}
+            </span>
+          ))}
+        </motion.div>
+      </motion.div>
     </section>
   );
 }
