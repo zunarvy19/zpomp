@@ -11,7 +11,7 @@ export const metadata: Metadata = {
     canonical: pageUrl,
   },
   openGraph: {
-    title: "Service Pompa Air Depok | Zunaidi Pompa",
+    title: "Service Pompa Air Depok | Tirta Agung Teknik",
     description:
       "Teknisi service pompa air dan jet pump untuk area Depok dan sekitarnya. Konsultasikan masalah pompa Anda.",
     url: pageUrl,
@@ -27,10 +27,10 @@ const structuredData = {
   serviceType: "Perbaikan dan perawatan pompa air serta jet pump",
   provider: {
     "@type": "LocalBusiness",
-    name: "Zunaidi Pompa",
+    name: "Tirta Agung Teknik",
     url: "https://zunaidipompa.zvy.my.id",
     telephone: "+62818970473",
-    image: "https://zunaidipompa.zvy.my.id/images/zp-logo.png",
+    image: "https://zunaidipompa.zvy.my.id/images/tat-logo.png",
   },
   areaServed: ["Depok", "Sawangan", "Bojongsari", "Pancoran Mas", "Beji", "Limo", "Cinere"],
   url: pageUrl,

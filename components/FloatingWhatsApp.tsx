@@ -5,7 +5,7 @@ import { trackContactClick } from "@/lib/analytics";
 export default function FloatingWhatsApp() {
   return (
     <a
-      href="https://wa.me/62818970473?text=Halo%20Zunaidi%20Pompa,%20saya%20ingin%20berkonsultasi."
+      href="https://wa.me/62818970473?text=Halo%20Tirta%20Agung%20Teknik,%20saya%20ingin%20berkonsultasi."
       target="_blank"
       rel="noopener noreferrer"
       onClick={() => trackContactClick("whatsapp", "floating")}

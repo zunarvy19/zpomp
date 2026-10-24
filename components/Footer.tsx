@@ -9,7 +9,7 @@ export default function Footer() {
     <footer className="bg-gray-900 text-gray-300">
       <div className="container mx-auto px-6 py-12 grid grid-cols-1 md:grid-cols-5 gap-10">
         <div className="md:col-span-2">
-          <p className="text-lg font-bold text-white">ZUNAIDI POMPA</p>
+          <p className="text-lg font-bold text-white">TIRTA AGUNG TEKNIK</p>
           <p className="text-sm text-gray-400 mt-1">Jasa Bor Sumur & Service Pompa Air</p>
           <p className="text-sm mt-4 text-gray-400 leading-relaxed">
             Melayani jasa bor sumur, service pompa air, perbaikan saluran air, dan solusi air bersih
@@ -59,7 +59,7 @@ export default function Footer() {
 
       <div className="border-t border-gray-800">
         <div className="container mx-auto px-6 py-4 flex flex-col md:flex-row justify-between text-xs text-gray-500">
-          <p>&copy; {new Date().getFullYear()} Zunaidi Pompa. All Rights Reserved.</p>
+          <p>&copy; {new Date().getFullYear()} Tirta Agung Teknik. All Rights Reserved.</p>
           <p>
             Managed by{" "}
             <a href="https://www.instagram.com/zunarvy" target="_blank" rel="noopener noreferrer" className="text-blue-400 hover:underline">

@@ -107,7 +107,7 @@ export default function Services() {
                     </span>
                   </div>
                   <a
-                    href={`https://wa.me/62818970473?text=${encodeURIComponent(`Halo Zunaidi Pompa, saya ingin bertanya tentang ${title}.`)}`}
+                    href={`https://wa.me/62818970473?text=${encodeURIComponent(`Halo Tirta Agung Teknik, saya ingin bertanya tentang ${title}.`)}`}
                     target="_blank"
                     rel="noopener noreferrer"
                     aria-label={`Tanyakan ${title}`}
@@ -140,7 +140,7 @@ export default function Services() {
             <p className="mt-1 text-sm text-[#617080]">Ceritakan gejalanya. Kami bantu menentukan titik pengecekan awal.</p>
           </div>
           <a
-            href="https://wa.me/62818970473?text=Halo%20Zunaidi%20Pompa,%20saya%20belum%20tahu%20sumber%20masalah%20air%20saya."
+            href="https://wa.me/62818970473?text=Halo%20Tirta%20Agung%20Teknik,%20saya%20belum%20tahu%20sumber%20masalah%20air%20saya."
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex shrink-0 items-center gap-2 text-sm font-bold text-[#1479C9]"

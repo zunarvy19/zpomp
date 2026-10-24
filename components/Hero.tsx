@@ -52,7 +52,7 @@ export default function Hero() {
             className="mt-8 flex flex-col gap-3 sm:flex-row"
           >
             <a
-              href="https://wa.me/62818970473?text=Halo%20Zunaidi%20Pompa,%20saya%20ingin%20konsultasi%20tentang%20masalah%20air."
+              href="https://wa.me/62818970473?text=Halo%20Tirta%20Agung%20Teknik,%20saya%20ingin%20konsultasi%20tentang%20masalah%20air."
               target="_blank"
               rel="noopener noreferrer"
               onClick={() => trackContactClick("whatsapp", "hero")}

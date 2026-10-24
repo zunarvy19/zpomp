@@ -14,18 +14,18 @@ const navLinks = [
 export default function Header() {
   return (
     <nav className="bg-white/90 backdrop-blur-md shadow-sm sticky top-0 z-50">
-      <div className="container mx-auto px-6 py-3 flex justify-between items-center">
-        <Link href="#hero" className="flex items-center gap-3">
+      <div className="container mx-auto flex items-center justify-between gap-3 px-4 py-3 sm:px-6">
+        <Link href="#hero" className="flex min-w-0 items-center gap-2 sm:gap-3">
           <Image
-            src="/images/zp-logo.png"
-            alt="Zunaidi Pompa Logo"
+            src="/images/tat-logo.png"
+            alt="Logo Tirta Agung Teknik"
             width={40}
             height={40}
             className="rounded-lg"
           />
-          <div className="flex flex-col leading-tight">
-            <span className="text-xl font-bold text-blue-700">ZUNAIDI POMPA</span>
-            <span className="text-xs text-gray-500">Jasa Bor Sumur & Service Pompa Air</span>
+          <div className="flex min-w-0 flex-col leading-tight">
+            <span className="whitespace-nowrap text-sm font-bold text-blue-700 sm:text-xl">TIRTA AGUNG TEKNIK</span>
+            <span className="hidden text-xs text-gray-500 lg:block">Jasa Bor Sumur & Service Pompa Air</span>
           </div>
         </Link>
 
@@ -42,14 +42,14 @@ export default function Header() {
         </div>
 
         <Link
-          href="https://wa.me/62818970473?text=Halo%20Zunaidi%20Pompa"
+          href="https://wa.me/62818970473?text=Halo%20Tirta%20Agung%20Teknik"
           target="_blank"
           rel="noopener noreferrer"
           onClick={() => trackContactClick("whatsapp", "navbar")}
-          className="bg-green-500 text-white text-sm font-semibold py-2.5 px-5 rounded-lg hover:bg-green-600 transition-colors flex items-center gap-2"
+          className="flex shrink-0 items-center gap-2 rounded-lg bg-green-500 px-3 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-green-600 sm:px-5"
         >
           <MessageCircle size={16} />
-          Hubungi Kami
+          <span className="hidden sm:inline">Hubungi Kami</span>
         </Link>
       </div>
     </nav>

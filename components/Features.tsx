@@ -46,7 +46,7 @@ export default function Features() {
           <motion.div {...revealMotion("up", 0, reduceMotion)}>
             <p className="flex items-center gap-3 text-xs font-extrabold uppercase tracking-[0.22em] text-[#8BD8F2]">
               <span className="h-2 w-2 rounded-full bg-[#F59E0B]" />
-              06 · Kenapa Zunaidi Pompa
+              06 · Kenapa Tirta Agung Teknik
             </p>
 
             <h2 className="mt-7 max-w-xl text-3xl font-extrabold leading-[1.1] tracking-[-0.045em] sm:text-4xl lg:text-5xl">

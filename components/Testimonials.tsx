@@ -13,7 +13,7 @@ const testimonials = [
   {
     name: "Rina Marlina",
     location: "Depok",
-    quote: "Sumur bor 80 meter beres dalam 1 hari. Hasilnya bagus dan airnya jernih. Terima kasih Zunaidi Pompa!",
+    quote: "Sumur bor 80 meter beres dalam 1 hari. Hasilnya bagus dan airnya jernih. Terima kasih Tirta Agung Teknik!",
   },
   {
     name: "Ahmad Fauzi",

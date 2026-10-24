@@ -11,11 +11,11 @@ const jakarta = Plus_Jakarta_Sans({
 
 export const metadata: Metadata = {
   title: {
-    default: "Jasa Bor Sumur & Service Pompa Air Depok | Zunaidi Pompa",
-    template: "%s | Zunaidi Pompa",
+    default: "Jasa Bor Sumur & Service Pompa Air Depok | Tirta Agung Teknik",
+    template: "%s | Tirta Agung Teknik",
   },
   description:
-    "Zunaidi Pompa: Ahli jasa bor sumur, service pompa air, dan instalasi pipa di Depok, Jakarta, Bogor. Solusi cepat dan profesional untuk masalah air bersih Anda.",
+    "Tirta Agung Teknik: Ahli jasa bor sumur, service pompa air, dan instalasi pipa di Depok, Jakarta, Bogor. Solusi cepat dan profesional untuk masalah air bersih Anda.",
   metadataBase: new URL("https://zunaidipompa.zvy.my.id"),
   keywords: [
     "bor sumur jakarta selatan",
@@ -27,17 +27,17 @@ export const metadata: Metadata = {
     "service pompa air profesional",
   ],
   openGraph: {
-    title: "Zunaidi Pompa | Jasa Bor Sumur & Service Pompa Air",
+    title: "Tirta Agung Teknik | Jasa Bor Sumur & Service Pompa Air",
     description:
       "Solusi cepat dan profesional untuk semua masalah air Anda di area Depok dan Jakarta Selatan",
     url: "https://zunaidipompa.zvy.my.id",
-    siteName: "Zunaidi Pompa",
+    siteName: "Tirta Agung Teknik",
     images: [
       {
-        url: "/favicon.png",
+        url: "/images/og-image.png",
         width: 1200,
         height: 630,
-        alt: "Zunaidi Pompa - Layanan Bor Sumur dan Service Pompa Air",
+        alt: "Tirta Agung Teknik - Layanan Bor Sumur dan Service Pompa Air",
       },
     ],
     locale: "id_ID",
@@ -45,13 +45,13 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Zunaidi Pompa | Ahli Bor Sumur & Service Pompa Air",
+    title: "Tirta Agung Teknik | Ahli Bor Sumur & Service Pompa Air",
     description:
       "Solusi cepat dan profesional untuk masalah air Anda di area Depok dan Jakarta Selatan",
     images: ["/images/og-image.png"],
   },
   icons: {
-    icon: "/images/zp-logo.png",
+    icon: "/images/tat-logo.png",
   },
 };
 

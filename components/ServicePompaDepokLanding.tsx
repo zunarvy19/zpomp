@@ -19,7 +19,7 @@ import Testimonials from "@/components/Testimonials";
 import { trackContactClick } from "@/lib/analytics";
 
 const whatsappUrl =
-  "https://wa.me/62818970473?text=Halo%20Zunaidi%20Pompa%2C%20saya%20butuh%20service%20pompa%20air%20di%20Depok.";
+  "https://wa.me/62818970473?text=Halo%20Tirta%20Agung%20Teknik%2C%20saya%20butuh%20service%20pompa%20air%20di%20Depok.";
 
 const problems = [
   "Pompa mati atau tidak menyala",
@@ -259,7 +259,7 @@ export default function ServicePompaDepokLanding() {
               </a>
             </div>
             <Link href="/" className="mt-8 inline-block text-sm font-semibold text-blue-100 hover:text-white">
-              Lihat semua layanan Zunaidi Pompa
+              Lihat semua layanan Tirta Agung Teknik
             </Link>
           </div>
         </section>
