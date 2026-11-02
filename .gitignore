@@ -39,3 +39,8 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# Responsive assets generated from the source photos before dev/build.
+/public/images/*-640.webp
+/public/images/*-960.webp
+/public/images/*-1280.webp

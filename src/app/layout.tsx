@@ -3,6 +3,7 @@ import { Plus_Jakarta_Sans } from "next/font/google";
 import type { Metadata } from "next";
 import Script from "next/script";
 import FloatingWhatsApp from "@/components/FloatingWhatsApp";
+import { absoluteUrl, businessSchema, site } from "@/lib/site";
 
 const jakarta = Plus_Jakarta_Sans({
   weight: ["400", "500", "600", "700"],
@@ -16,21 +17,12 @@ export const metadata: Metadata = {
   },
   description:
     "Tirta Agung Teknik: Ahli jasa bor sumur, service pompa air, dan instalasi pipa di Depok, Jakarta, Bogor. Solusi cepat dan profesional untuk masalah air bersih Anda.",
-  metadataBase: new URL("https://zunaidipompa.zvy.my.id"),
-  keywords: [
-    "bor sumur jakarta selatan",
-    "service pompa air jakarta selatan",
-    "jasa instalasi pipa",
-    "tukang ledeng jakarta selatan",
-    "solusi air bersih",
-    "bor sumur artesis",
-    "service pompa air profesional",
-  ],
+  metadataBase: new URL(site.url),
   openGraph: {
     title: "Tirta Agung Teknik | Jasa Bor Sumur & Service Pompa Air",
     description:
       "Solusi cepat dan profesional untuk semua masalah air Anda di area Depok dan Jakarta Selatan",
-    url: "https://zunaidipompa.zvy.my.id",
+    url: absoluteUrl(),
     siteName: "Tirta Agung Teknik",
     images: [
       {
@@ -88,6 +80,20 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         </Script>
       </head>
       <body>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@graph": [businessSchema, {
+              "@type": "WebSite",
+              "@id": `${site.url}/#website`,
+              url: absoluteUrl(),
+              name: site.name,
+              inLanguage: "id-ID",
+              publisher: { "@id": businessSchema["@id"] },
+            }],
+          }).replace(/</g, "\\u003c") }}
+        />
         {children}
         <FloatingWhatsApp />
       </body>

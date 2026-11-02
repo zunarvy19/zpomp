@@ -1,6 +1,7 @@
 "use client";
 
-import Image from "next/image";
+import ResponsiveImage from "@/components/ResponsiveImage";
+import FAQ from "@/components/FAQ";
 import Link from "next/link";
 import {
   CheckCircle2,
@@ -64,11 +65,12 @@ export default function ServicePompaDepokLanding() {
 
       <main>
         <section id="hero" className="relative isolate overflow-hidden bg-slate-950 text-white">
-          <Image
+          <ResponsiveImage
             src="/images/servis-pompa-jetpump.jpg"
             alt="Teknisi service pompa air dan jet pump di Depok"
             fill
             priority
+            sizes="100vw"
             className="-z-20 object-cover object-center"
           />
           <div className="absolute inset-0 -z-10 bg-slate-950/80" />
@@ -214,24 +216,7 @@ export default function ServicePompaDepokLanding() {
 
         <Testimonials />
 
-        <section id="faq" className="bg-white py-16 md:py-20">
-          <div className="container mx-auto max-w-4xl px-6">
-            <h2 className="text-center text-3xl font-bold md:text-4xl">Pertanyaan Umum</h2>
-            <div className="mt-10 space-y-4">
-              {[
-                ["Apakah teknisi bisa datang ke rumah?", "Ya. Layanan dilakukan di lokasi pelanggan selama alamat masih berada dalam area jangkauan teknisi."],
-                ["Merek pompa apa saja yang bisa diperiksa?", "Kami menangani berbagai pompa rumah tangga dan jet pump. Sampaikan merek serta gejalanya saat menghubungi kami."],
-                ["Apakah biaya dijelaskan sebelum perbaikan?", "Ya. Setelah pengecekan, teknisi menjelaskan masalah dan estimasi pengerjaan sebelum perbaikan dimulai."],
-                ["Bagaimana cara memesan layanan?", "Telepon 0818-970-473 atau kirim pesan WhatsApp berisi lokasi dan keluhan pompa Anda."],
-              ].map(([question, answer]) => (
-                <details key={question} className="group rounded-2xl border border-slate-200 bg-slate-50 p-5">
-                  <summary className="cursor-pointer list-none font-bold">{question}</summary>
-                  <p className="mt-3 text-sm leading-relaxed text-slate-600">{answer}</p>
-                </details>
-              ))}
-            </div>
-          </div>
-        </section>
+        <FAQ />
 
         <section id="kontak" className="bg-blue-600 py-16 text-white">
           <div className="container mx-auto px-6 text-center">

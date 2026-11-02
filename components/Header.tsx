@@ -5,22 +5,23 @@ import { MessageCircle } from "lucide-react";
 import { trackContactClick } from "@/lib/analytics";
 
 const navLinks = [
-  { href: "#hero", label: "Beranda" },
-  { href: "#layanan", label: "Layanan" },
-  { href: "#testimoni", label: "Testimoni" },
-  { href: "#kontak", label: "Kontak" },
+  { href: "/#hero", label: "Beranda" },
+  { href: "/#layanan", label: "Layanan" },
+  { href: "/#testimoni", label: "Testimoni" },
+  { href: "/#kontak", label: "Kontak" },
 ];
 
 export default function Header() {
   return (
     <nav className="bg-white/90 backdrop-blur-md shadow-sm sticky top-0 z-50">
       <div className="container mx-auto flex items-center justify-between gap-3 px-4 py-3 sm:px-6">
-        <Link href="#hero" className="flex min-w-0 items-center gap-2 sm:gap-3">
+        <Link href="/" aria-label="Beranda Tirta Agung Teknik" className="flex min-w-0 items-center gap-2 sm:gap-3">
           <Image
             src="/images/tat-logo.png"
             alt="Logo Tirta Agung Teknik"
             width={40}
             height={40}
+            unoptimized
             className="rounded-lg"
           />
           <div className="flex min-w-0 flex-col leading-tight">

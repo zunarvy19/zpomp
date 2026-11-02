@@ -1,7 +1,9 @@
+// Temporarily disabled: rename this file to page.tsx to restore the Depok route.
 import type { Metadata } from "next";
 import ServicePompaDepokLanding from "@/components/ServicePompaDepokLanding";
+import { absoluteUrl, businessSchema, site } from "@/lib/site";
 
-const pageUrl = "https://zunaidipompa.zvy.my.id/service-pompa/depok";
+const pageUrl = absoluteUrl("/service-pompa/depok");
 
 export const metadata: Metadata = {
   title: "Service Pompa Air Depok | Teknisi Datang ke Lokasi",
@@ -18,6 +20,12 @@ export const metadata: Metadata = {
     type: "website",
     images: ["/images/og-image.png"],
   },
+  twitter: {
+    card: "summary_large_image",
+    title: "Service Pompa Air Depok | Tirta Agung Teknik",
+    description: "Perbaikan pompa air dan jet pump di Depok. Konsultasikan gejala pompa dan jadwal pengecekan di lokasi.",
+    images: ["/images/og-image.png"],
+  },
 };
 
 const structuredData = {
@@ -26,13 +34,9 @@ const structuredData = {
   name: "Service Pompa Air Depok",
   serviceType: "Perbaikan dan perawatan pompa air serta jet pump",
   provider: {
-    "@type": "LocalBusiness",
-    name: "Tirta Agung Teknik",
-    url: "https://zunaidipompa.zvy.my.id",
-    telephone: "+62818970473",
-    image: "https://zunaidipompa.zvy.my.id/images/tat-logo.png",
+    "@id": businessSchema["@id"],
   },
-  areaServed: ["Depok", "Sawangan", "Bojongsari", "Pancoran Mas", "Beji", "Limo", "Cinere"],
+  areaServed: site.areas,
   url: pageUrl,
 };
 

@@ -5,8 +5,11 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "next start",
-    "lint": "next lint"
+    "start": "node scripts/serve-preview.mjs",
+    "lint": "eslint src components lib",
+    "prebuild": "node scripts/optimize-images.mjs",
+    "predev": "node scripts/optimize-images.mjs",
+    "check:seo": "node --test scripts/seo.test.mjs"
   },
   "dependencies": {
     "@radix-ui/react-slot": "^1.2.3",
@@ -28,6 +31,7 @@
     "@types/react-dom": "^19",
     "eslint": "^9",
     "eslint-config-next": "15.3.4",
+    "sharp": "^0.34.5",
     "tailwindcss": "^4",
     "tw-animate-css": "^1.3.4",
     "typescript": "^5"

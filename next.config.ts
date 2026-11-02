@@ -11,7 +11,7 @@ const nextConfig: NextConfig = {
         pathname: '**',
       },
     ],
-    unoptimized: true,
+    deviceSizes: [640, 960, 1280],
   },
   output: 'export',
 };

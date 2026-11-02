@@ -1,6 +1,6 @@
 "use client";
 
-import Image from "next/image";
+import ResponsiveImage from "@/components/ResponsiveImage";
 import { ArrowRight, Check, MessageCircle, Phone, ScanSearch } from "lucide-react";
 import { motion, useReducedMotion } from "framer-motion";
 import { trackContactClick } from "@/lib/analytics";
@@ -34,8 +34,8 @@ export default function Hero() {
             {...revealMotion("left", 0.08, reduceMotion)}
             className="mt-6 text-[2.7rem] font-extrabold leading-[1.03] tracking-[-0.055em] text-[#071C2E] sm:text-6xl lg:text-[4.25rem]"
           >
-            Air tidak mengalir
-            <span className="block text-[#1479C9]">seperti seharusnya?</span>
+            Service Pompa Air &amp; Bor Sumur{" "}
+            <span className="block text-[#1479C9]">Depok dan Sekitarnya</span>
           </motion.h1>
 
           <motion.p
@@ -97,7 +97,7 @@ export default function Hero() {
           <div className="absolute -right-12 top-0 hidden h-32 w-32 rounded-full border-[24px] border-[#27A9E1]/15 sm:block" />
 
           <figure className="relative ml-auto aspect-[4/4.7] w-[90%] overflow-hidden rounded-[2rem] border-[6px] border-white bg-[#DFF3FB] shadow-[0_28px_70px_rgba(7,28,46,0.18)]">
-            <Image
+            <ResponsiveImage
               src="/images/hero-technician-ai-v1.png"
               alt="Ilustrasi teknisi sedang memeriksa instalasi pompa air rumah"
               fill

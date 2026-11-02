@@ -1,13 +1,13 @@
 "use client";
 
-import Image from "next/image";
-import Link from "next/link";
+import ResponsiveImage from "@/components/ResponsiveImage";
 import { ArrowRight, Droplets, Filter, Pipette, Wrench } from "lucide-react";
 import { motion, useReducedMotion } from "framer-motion";
 import { revealMotion } from "@/lib/motion";
 
 const supportingServices = [
   {
+    id: "bor-sumur",
     number: "02",
     icon: Droplets,
     title: "Jasa Bor Sumur",
@@ -15,6 +15,7 @@ const supportingServices = [
     tags: ["Rumah", "Usaha", "Sumber baru"],
   },
   {
+    id: "instalasi-pipa",
     number: "03",
     icon: Pipette,
     title: "Instalasi Pompa & Pipa",
@@ -22,6 +23,7 @@ const supportingServices = [
     tags: ["Pompa baru", "Tandon", "Jalur air"],
   },
   {
+    id: "solusi-air",
     number: "04",
     icon: Filter,
     title: "Solusi Sistem Air",
@@ -58,7 +60,7 @@ export default function Services() {
             className="group overflow-hidden rounded-[1.75rem] bg-[#071C2E] text-white"
           >
             <div className="relative min-h-[330px] overflow-hidden sm:min-h-[410px]">
-              <Image
+              <ResponsiveImage
                 src="/images/pemasangan-part-pompa.jpg"
                 alt="Dokumentasi instalasi pompa dan kontrol otomatis"
                 fill
@@ -71,7 +73,7 @@ export default function Services() {
               </span>
             </div>
 
-            <div className="grid gap-6 p-7 sm:p-9 md:grid-cols-[1fr_auto] md:items-end">
+            <div className="p-7 sm:p-9">
               <div>
                 <div className="flex items-center gap-3 text-[#8BD8F2]">
                   <span className="text-xs font-bold tracking-[0.18em]">01</span>
@@ -83,18 +85,13 @@ export default function Services() {
                   Pemeriksaan, perbaikan, dan perawatan pompa berdasarkan sumber masalah—mulai dari mesin, otomatis, daya hisap, hingga instalasi pendukung.
                 </p>
               </div>
-              <Link
-                href="/service-pompa/depok"
-                className="inline-flex h-12 items-center justify-center gap-2 rounded-xl bg-[#1479C9] px-5 text-sm font-bold text-white transition-colors hover:bg-[#155F9C]"
-              >
-                Detail layanan <ArrowRight size={17} />
-              </Link>
             </div>
           </motion.article>
 
           <div className="grid gap-4">
-            {supportingServices.map(({ number, icon: Icon, title, description, tags }, index) => (
+            {supportingServices.map(({ id, number, icon: Icon, title, description, tags }, index) => (
               <motion.article
+                id={id}
                 key={title}
                 {...revealMotion("right", 0.1 + index * 0.08, reduceMotion, 28)}
                 className="group rounded-2xl border border-[#DCE5EC] bg-[#F8FBFD] p-6 transition-colors hover:border-[#8BD8F2] hover:bg-[#F3F8FB] sm:p-7"
