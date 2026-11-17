@@ -5,7 +5,7 @@ import { ArrowRight, Check, MessageCircle, Phone, ScanSearch } from "lucide-reac
 import { motion, useReducedMotion } from "framer-motion";
 import { trackContactClick } from "@/lib/analytics";
 import { revealMotion } from "@/lib/motion";
-import { serviceAreaText } from "@/lib/site";
+// import { serviceAreaText } from "@/lib/site";
 
 const assurances = [
   "Diagnosis sebelum tindakan",

@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { serviceAreaText } from "@/lib/site";
+// import { serviceAreaText } from "@/lib/site";
 
 const layanan = [
   { label: "Jasa Bor Sumur", href: "/#bor-sumur" },
