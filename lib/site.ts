@@ -9,7 +9,7 @@ export const business = {
     // BUTUH KONFIRMASI: campaign targeting and geography alone do not confirm coverage.
     { name: "Jakarta Selatan", neighborhoods: ["Jagakarsa", "Ciganjur"], confirmed: false },
     { name: "Cinere", neighborhoods: [], confirmed: false },
-    { name: "Cirendeu", neighborhoods: [], confirmed: true },
+    { name: "Cirendeu", neighborhoods: [], confirmed: false },
   ],
 };
 
@@ -20,7 +20,7 @@ export const serviceAreaText = new Intl.ListFormat("id", { style: "long", type: 
 
 export const homepageSeo = {
   title: `Service Pompa Air & Bor Sumur${serviceAreaText ? ` ${serviceAreaText}` : ""} | ${site.name}`,
-  description: `Service pompa atau mesin air${serviceAreaText ? ` di ${serviceAreaText}` : ""}, termasuk Sanyo dan Shimizu. Diagnosis dulu; estimasi dijelaskan sebelum pengerjaan.`,
+  description: `Service pompa atau mesin air${serviceAreaText ? ` di ${serviceAreaText}` : ""}Diagnosis dulu; estimasi dijelaskan sebelum pengerjaan.`,
 };
 
 export function absoluteUrl(path = "/") {
