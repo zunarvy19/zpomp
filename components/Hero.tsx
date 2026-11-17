@@ -45,7 +45,7 @@ export default function Hero() {
           >
             Teknisi menangani pompa atau mesin air yang tidak menyala,
             air tidak naik, tekanan lemah, atau berisik.
-            {serviceAreaText && <span className="block">Area layanan: {serviceAreaText}.</span>}
+            {/* {serviceAreaText && <span className="block">Area layanan: {serviceAreaText}.</span>} */}
           </motion.p>
 
           <motion.div
