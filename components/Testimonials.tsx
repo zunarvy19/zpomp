@@ -7,22 +7,18 @@ import { revealMotion } from "@/lib/motion";
 const testimonials = [
   {
     name: "Budi Santoso",
-    location: "Bekasi",
     quote: "Pelayanan cepat, teknisi ramah dan profesional. Pompa yang mati total langsung normal lagi.",
   },
   {
     name: "Rina Marlina",
-    location: "Depok",
     quote: "Sumur bor 80 meter beres dalam 1 hari. Hasilnya bagus dan airnya jernih. Terima kasih Tirta Agung Teknik!",
   },
   {
     name: "Ahmad Fauzi",
-    location: "Tangerang",
     quote: "Pipa bocor di rumah saya diperbaiki dengan rapi. Harganya juga wajar.",
   },
   {
     name: "Wahyudi",
-    location: "Jakarta",
     quote: "Sudah langganan service pompa di sini. Selalu responsif dan hasilnya memuaskan.",
   },
 ];
@@ -75,7 +71,7 @@ export default function Testimonials() {
               </span>
               <div>
                 <p className="font-bold">{featured.name}</p>
-                <p className="mt-1 text-xs text-white/60">Pelanggan · {featured.location}</p>
+                <p className="mt-1 text-xs text-white/60">Pelanggan</p>
               </div>
             </div>
           </motion.article>
@@ -97,7 +93,7 @@ export default function Testimonials() {
                       </span>
                       <div>
                         <p className="text-sm font-bold text-[#071C2E]">{testimonial.name}</p>
-                        <p className="text-xs text-[#617080]">Pelanggan · {testimonial.location}</p>
+                        <p className="text-xs text-[#617080]">Pelanggan</p>
                       </div>
                     </div>
                   </div>

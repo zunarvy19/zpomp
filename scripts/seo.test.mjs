@@ -11,6 +11,51 @@ const htmlFile = (route) => resolve(root, route === "/" ? "index.html" : `${rout
 const pages = new Map(await Promise.all(routes.map(async (route) => [route, await readFile(htmlFile(route), "utf8")])));
 const attrs = (tag) => Object.fromEntries([...tag.matchAll(/([\w:-]+)="([^"]*)"/g)].map((m) => [m[1], m[2].replaceAll("&amp;", "&")]));
 const tags = (html, name) => [...html.matchAll(new RegExp(`<${name}\\b[^>]*>`, "gi"))].map((m) => attrs(m[0]));
+const homepageTitle = "Service Pompa Air & Bor Sumur Jaksel & Cinere | Tirta Agung Teknik";
+const homepageDescription = "Service pompa air, bor sumur, dan instalasi pipa di Jakarta Selatan, Cinere, dan Cirendeu. Diagnosis dulu, estimasi dijelaskan sebelum pengerjaan.";
+const serviceAreas = ["Jakarta Selatan", "Jagakarsa", "Ciganjur", "Cinere", "Cirendeu"];
+const legacyAreas = ["Depok", "Bogor", "Sawangan", "Bojongsari", "Pancoran Mas", "Beji", "Limo", "Bekasi", "Tangerang"];
+const textContent = (html) => html
+  .replace(/<script\b[^>]*>[\s\S]*?<\/script>/gi, " ")
+  .replace(/<style\b[^>]*>[\s\S]*?<\/style>/gi, " ")
+  .replace(/<[^>]*>/g, " ")
+  .replaceAll("&amp;", "&")
+  .replace(/\s+/g, " ")
+  .trim();
+
+test("homepage metadata uses the official coverage and exact approved copy", () => {
+  const html = pages.get("/");
+  const meta = tags(html, "meta");
+  const title = html.match(/<title\b[^>]*>([\s\S]*?)<\/title>/i)?.[1];
+  assert.equal(textContent(title || ""), homepageTitle);
+  for (const [attribute, key, expected] of [
+    ["name", "description", homepageDescription],
+    ["property", "og:title", homepageTitle],
+    ["property", "og:description", homepageDescription],
+    ["name", "twitter:title", homepageTitle],
+    ["name", "twitter:description", homepageDescription],
+  ]) {
+    const matches = meta.filter((tag) => tag[attribute] === key);
+    assert.equal(matches.length, 1, key);
+    assert.equal(matches[0].content, expected, key);
+  }
+  for (const area of legacyAreas) {
+    assert.ok(!html.includes(area), `Legacy area in homepage export: ${area}`);
+  }
+});
+
+test("homepage content omits location names while keeping the service heading", () => {
+  const html = pages.get("/");
+  const h1 = html.match(/<h1\b[^>]*>([\s\S]*?)<\/h1>/i)?.[1];
+  assert.equal(textContent(h1 || ""), "Service Pompa Air & Bor Sumur");
+  const body = html.match(/<body\b[^>]*>([\s\S]*?)<\/body>/i)?.[1];
+  assert.ok(body);
+  const content = textContent(body);
+  for (const area of [...serviceAreas, "Jaksel", ...legacyAreas]) {
+    assert.ok(!content.includes(area), `Location in visible content: ${area}`);
+  }
+  assert.ok(!content.includes("Area layanan:"));
+});
 
 test("each page identifies the primary domain without legacy metadata", () => {
   for (const [route, html] of pages) {
@@ -33,6 +78,8 @@ test("structured data points to one business on the primary domain", () => {
     const business = data.flatMap((d) => d["@graph"] || []).find((d) => d["@type"] === "Plumber");
     assert.equal(business?.["@id"], `${origin}/#business`);
     assert.equal(business?.url, `${origin}/`);
+    assert.equal(business?.description, homepageDescription);
+    assert.deepEqual(business?.areaServed, serviceAreas.map((name) => ({ "@type": "Place", name })));
     if (route !== "/") {
       const service = data.find((d) => d["@type"] === "Service");
       assert.equal(service?.url, origin + route);

@@ -3,7 +3,7 @@ import { Plus_Jakarta_Sans } from "next/font/google";
 import type { Metadata } from "next";
 import Script from "next/script";
 import FloatingWhatsApp from "@/components/FloatingWhatsApp";
-import { absoluteUrl, businessSchema, site } from "@/lib/site";
+import { absoluteUrl, businessSchema, homepageSeo, site } from "@/lib/site";
 
 const jakarta = Plus_Jakarta_Sans({
   weight: ["400", "500", "600", "700"],
@@ -12,16 +12,14 @@ const jakarta = Plus_Jakarta_Sans({
 
 export const metadata: Metadata = {
   title: {
-    default: "Jasa Bor Sumur & Service Pompa Air Depok | Tirta Agung Teknik",
+    default: "Service Pompa Air & Bor Sumur | Tirta Agung Teknik",
     template: "%s | Tirta Agung Teknik",
   },
-  description:
-    "Tirta Agung Teknik: Ahli jasa bor sumur, service pompa air, dan instalasi pipa di Depok, Jakarta, Bogor. Solusi cepat dan profesional untuk masalah air bersih Anda.",
+  description: homepageSeo.description,
   metadataBase: new URL(site.url),
   openGraph: {
     title: "Tirta Agung Teknik | Jasa Bor Sumur & Service Pompa Air",
-    description:
-      "Solusi cepat dan profesional untuk semua masalah air Anda di area Depok dan Jakarta Selatan",
+    description: homepageSeo.description,
     url: absoluteUrl(),
     siteName: "Tirta Agung Teknik",
     images: [
@@ -38,8 +36,7 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: "Tirta Agung Teknik | Ahli Bor Sumur & Service Pompa Air",
-    description:
-      "Solusi cepat dan profesional untuk masalah air Anda di area Depok dan Jakarta Selatan",
+    description: homepageSeo.description,
     images: ["/images/og-image.png"],
   },
   icons: {

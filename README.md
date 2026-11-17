@@ -52,10 +52,16 @@ clean URL handling there; Next.js redirects do not execute in a static export.
 
 ## SEO configuration
 
-The Depok landing page is temporarily disabled: its source is preserved as
+The legacy Depok landing page remains disabled: its source is preserved as
 `src/app/service-pompa/depok/page.disabled.tsx`, and its homepage links and
-sitemap entry are commented out. To restore it, rename the source to
-`page.tsx` and restore those links, the sitemap entry, and the SEO test route.
+sitemap entry are excluded. Do not restore this route without reviewing the
+current service coverage and SEO strategy. No location-specific pages are published.
+
+- `business.serviceArea` in `lib/site.ts` is the source of truth for confirmed
+  coverage: Jakarta Selatan (including Jagakarsa, Ciganjur, and nearby areas),
+  Cinere, and Cirendeu. Homepage SEO copy and structured data derive from it.
+- Location names appear only in metadata and structured data, not homepage
+  content or testimonial labels. Keep the service-focused H1 free of locations.
 
 - Each indexable page declares its own canonical URL. New pages must also be
   added to `src/app/sitemap.ts` and included in `check:seo`.

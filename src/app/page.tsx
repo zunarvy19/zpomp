@@ -8,10 +8,30 @@ import Testimonials from "@/components/Testimonials";
 import Gallery from "@/components/Gallery";
 import FAQ from "@/components/FAQ";
 import type { Metadata } from "next";
-import { absoluteUrl } from "@/lib/site";
+import { absoluteUrl, homepageSeo, site } from "@/lib/site";
 
 export const metadata: Metadata = {
+  title: { absolute: homepageSeo.title },
+  description: homepageSeo.description,
   alternates: { canonical: absoluteUrl() },
+  openGraph: {
+    ...homepageSeo,
+    url: absoluteUrl(),
+    siteName: site.name,
+    locale: "id_ID",
+    type: "website",
+    images: [{
+      url: "/images/og-image.png",
+      width: 1200,
+      height: 630,
+      alt: "Tirta Agung Teknik - Layanan Bor Sumur dan Service Pompa Air",
+    }],
+  },
+  twitter: {
+    ...homepageSeo,
+    card: "summary_large_image",
+    images: ["/images/og-image.png"],
+  },
 };
 
 export default function Home() {

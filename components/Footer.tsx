@@ -1,9 +1,7 @@
 import Link from "next/link";
-import { site } from "@/lib/site";
 
 const layanan = [
   { label: "Jasa Bor Sumur", href: "/#bor-sumur" },
-  // { label: "Service Pompa Air Depok", href: "/service-pompa/depok" },
   { label: "Service Pompa Air", href: "/#layanan" },
   { label: "Pemasangan Saluran Air", href: "/#instalasi-pipa" },
   { label: "Solusi Saluran Air", href: "/#solusi-air" },
@@ -25,7 +23,6 @@ export default function Footer() {
             Melayani jasa bor sumur, service pompa air, perbaikan saluran air,
             dan solusi air bersih untuk rumah dan usaha.
           </p>
-          <p className="mt-4 text-sm leading-6 text-gray-400">Area layanan: {site.areas.join(", ")}.</p>
         </div>
         <div>
           <p className="mb-3 font-semibold text-white">Layanan</p>

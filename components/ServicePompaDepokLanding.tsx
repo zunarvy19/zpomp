@@ -20,23 +20,13 @@ import Testimonials from "@/components/Testimonials";
 import { trackContactClick } from "@/lib/analytics";
 
 const whatsappUrl =
-  "https://wa.me/62818970473?text=Halo%20Tirta%20Agung%20Teknik%2C%20saya%20butuh%20service%20pompa%20air%20di%20Depok.";
+  "https://wa.me/62818970473?text=Halo%20Tirta%20Agung%20Teknik%2C%20saya%20butuh%20service%20pompa%20air.";
 
 const problems = [
   "Pompa mati atau tidak menyala",
   "Air tidak naik atau tekanannya kecil",
   "Pompa berisik, bocor, atau cepat panas",
   "Jet pump hidup terus atau sering kehilangan tekanan",
-];
-
-const serviceAreas = [
-  "Depok",
-  "Sawangan",
-  "Bojongsari",
-  "Pancoran Mas",
-  "Beji",
-  "Limo",
-  "Cinere",
 ];
 
 const steps = [
@@ -67,7 +57,7 @@ export default function ServicePompaDepokLanding() {
         <section id="hero" className="relative isolate overflow-hidden bg-slate-950 text-white">
           <ResponsiveImage
             src="/images/servis-pompa-jetpump.jpg"
-            alt="Teknisi service pompa air dan jet pump di Depok"
+            alt="Teknisi service pompa air dan jet pump"
             fill
             priority
             sizes="100vw"
@@ -78,10 +68,10 @@ export default function ServicePompaDepokLanding() {
           <div className="container mx-auto grid min-h-[640px] items-center gap-12 px-6 py-20 lg:grid-cols-[1.15fr_0.85fr]">
             <div>
               <p className="mb-4 inline-flex rounded-full border border-blue-300/30 bg-blue-500/15 px-4 py-2 text-sm font-semibold text-blue-100">
-                Service pompa air area Depok dan sekitarnya
+                Service pompa air dan jet pump
               </p>
               <h1 className="max-w-3xl text-4xl font-extrabold leading-tight md:text-6xl">
-                Service Pompa Air Depok, Teknisi Datang ke Lokasi
+                Service Pompa Air, Teknisi Datang ke Lokasi
               </h1>
               <p className="mt-5 max-w-2xl text-lg leading-relaxed text-slate-200">
                 Pompa mati, air tidak naik, tekanan kecil, atau jet pump bermasalah?
@@ -194,33 +184,13 @@ export default function ServicePompaDepokLanding() {
           </div>
         </section>
 
-        <section id="area" className="container mx-auto px-6 py-16 md:py-20">
-          <div className="grid gap-10 rounded-3xl bg-blue-950 p-8 text-white md:p-12 lg:grid-cols-2">
-            <div>
-              <p className="text-sm font-bold uppercase tracking-wider text-blue-300">Area layanan</p>
-              <h2 className="mt-3 text-3xl font-bold">Melayani Radius Sekitar Depok</h2>
-              <p className="mt-4 leading-relaxed text-blue-100">
-                Ketersediaan teknisi bergantung jarak dan jadwal. Hubungi kami untuk memastikan
-                lokasi Anda masuk jangkauan layanan hari ini.
-              </p>
-            </div>
-            <div className="grid grid-cols-2 gap-3 sm:grid-cols-3">
-              {serviceAreas.map((area) => (
-                <span key={area} className="rounded-xl border border-blue-700/60 bg-blue-900/60 px-4 py-3 text-center text-sm font-semibold">
-                  {area}
-                </span>
-              ))}
-            </div>
-          </div>
-        </section>
-
         <Testimonials />
 
         <FAQ />
 
         <section id="kontak" className="bg-blue-600 py-16 text-white">
           <div className="container mx-auto px-6 text-center">
-            <h2 className="text-3xl font-bold md:text-4xl">Butuh Service Pompa Air di Depok?</h2>
+            <h2 className="text-3xl font-bold md:text-4xl">Butuh Service Pompa Air?</h2>
             <p className="mx-auto mt-4 max-w-2xl text-blue-100">
               Jelaskan masalah pompa dan lokasi Anda. Kami akan membantu mengecek ketersediaan teknisi.
             </p>

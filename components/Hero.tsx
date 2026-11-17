@@ -34,8 +34,8 @@ export default function Hero() {
             {...revealMotion("left", 0.08, reduceMotion)}
             className="mt-6 text-[2.7rem] font-extrabold leading-[1.03] tracking-[-0.055em] text-[#071C2E] sm:text-6xl lg:text-[4.25rem]"
           >
-            Service Pompa Air &amp; Bor Sumur{" "}
-            <span className="block text-[#1479C9]">Depok dan Sekitarnya</span>
+            Service Pompa Air &amp;{" "}
+            <span className="block text-[#1479C9]">Bor Sumur</span>
           </motion.h1>
 
           <motion.p
