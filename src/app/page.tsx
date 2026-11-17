@@ -38,7 +38,7 @@ export default function Home() {
   return (
     <div className="bg-gray-50 text-gray-800">
       <Header />
-      <main>
+      <main className="overflow-x-clip">
       <Hero />
       <Services />  
       <Gallery />

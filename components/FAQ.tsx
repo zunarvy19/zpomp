@@ -1,7 +1,7 @@
 export default function FAQ() {
   const questions = [
     ["Apakah teknisi bisa datang ke rumah?", "Ya. Layanan dilakukan di lokasi pelanggan selama alamat masih berada dalam area jangkauan teknisi. Kirim lokasi Anda untuk mengecek ketersediaan jadwal."],
-    ["Merek pompa apa saja yang bisa diperiksa?", "Kami menangani berbagai pompa rumah tangga dan jet pump. Sampaikan merek serta gejalanya saat menghubungi kami."],
+    ["Apakah menerima service pompa air Sanyo dan Shimizu?", "Ya. Kami menerima pemeriksaan dan perbaikan pompa air Sanyo dan Shimizu. Sampaikan tipe dan gejalanya saat konsultasi. Penyebutan merek bukan afiliasi resmi dengan produsen."],
     ["Apakah biaya dijelaskan sebelum perbaikan?", "Ya. Setelah pengecekan, teknisi menjelaskan masalah dan estimasi pengerjaan sebelum perbaikan dimulai."],
     ["Bagaimana cara memesan layanan?", "Telepon 0818-970-473 atau kirim pesan WhatsApp berisi lokasi dan keluhan pompa Anda."],
   ];

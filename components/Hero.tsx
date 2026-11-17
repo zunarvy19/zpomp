@@ -5,6 +5,7 @@ import { ArrowRight, Check, MessageCircle, Phone, ScanSearch } from "lucide-reac
 import { motion, useReducedMotion } from "framer-motion";
 import { trackContactClick } from "@/lib/analytics";
 import { revealMotion } from "@/lib/motion";
+import { serviceAreaText } from "@/lib/site";
 
 const assurances = [
   "Diagnosis sebelum tindakan",
@@ -42,9 +43,9 @@ export default function Hero() {
             {...revealMotion("left", 0.16, reduceMotion)}
             className="mt-7 max-w-2xl text-base leading-8 text-[#617080] sm:text-lg"
           >
-            Kami menangani service pompa, bor sumur, dan instalasi air dengan
-            mencari sumber masalahnya lebih dulu—supaya tindakan yang diambil
-            benar-benar sesuai kebutuhan.
+            Teknisi menangani pompa atau mesin air yang tidak menyala,
+            air tidak naik, tekanan lemah, atau berisik.
+            {serviceAreaText && <span className="block">Area layanan: {serviceAreaText}.</span>}
           </motion.p>
 
           <motion.div
@@ -59,7 +60,7 @@ export default function Hero() {
               className="group inline-flex items-center justify-center gap-3 rounded-xl bg-[#1479C9] px-6 py-4 text-sm font-bold text-white transition-all hover:-translate-y-0.5 hover:bg-[#155F9C]"
             >
               <MessageCircle size={19} />
-              Ceritakan Masalah Anda
+              Konsultasi via WhatsApp
               <ArrowRight size={17} className="transition-transform group-hover:translate-x-0.5" />
             </a>
 

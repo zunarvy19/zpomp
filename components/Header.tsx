@@ -46,6 +46,7 @@ export default function Header() {
           href="https://wa.me/62818970473?text=Halo%20Tirta%20Agung%20Teknik"
           target="_blank"
           rel="noopener noreferrer"
+          aria-label="Konsultasi via WhatsApp"
           onClick={() => trackContactClick("whatsapp", "navbar")}
           className="flex shrink-0 items-center gap-2 rounded-lg bg-green-500 px-3 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-green-600 sm:px-5"
         >

@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { serviceAreaText } from "@/lib/site";
 
 const layanan = [
   { label: "Jasa Bor Sumur", href: "/#bor-sumur" },
@@ -39,7 +40,10 @@ export default function Footer() {
         <div>
           <p className="mb-3 font-semibold text-white">Kontak</p>
           <Link href="/#kontak" className="text-sm hover:text-white">Telepon dan WhatsApp 0818-970-473</Link>
-          <p className="mt-3 text-sm leading-6 text-gray-400">Konfirmasikan lokasi dan jadwal kunjungan sebelum memesan.</p>
+          <p className="mt-3 text-sm leading-6 text-gray-400">
+            {serviceAreaText && <>Area layanan: {serviceAreaText}. </>}
+            Kirim lokasi Anda untuk konfirmasi jangkauan dan jadwal teknisi.
+          </p>
         </div>
       </div>
       <div className="border-t border-gray-800">

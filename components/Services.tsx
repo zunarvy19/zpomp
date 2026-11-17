@@ -82,7 +82,10 @@ export default function Services() {
                 </div>
                 <h3 className="mt-5 text-2xl font-extrabold tracking-[-0.03em] sm:text-3xl">Service Pompa Air</h3>
                 <p className="mt-3 max-w-xl text-sm leading-7 text-white/60">
-                  Pemeriksaan, perbaikan, dan perawatan pompa berdasarkan sumber masalah—mulai dari mesin, otomatis, daya hisap, hingga instalasi pendukung.
+                  Pemeriksaan dan perbaikan pompa atau mesin air, termasuk jet pump,
+                  yang mati, tidak mengalirkan air, berisik, atau tekanannya lemah.
+                  Menerima pompa air Sanyo dan Shimizu; penanganan mengikuti hasil
+                  pengecekan teknisi.
                 </p>
               </div>
             </div>

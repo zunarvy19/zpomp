@@ -11,11 +11,13 @@ const htmlFile = (route) => resolve(root, route === "/" ? "index.html" : `${rout
 const pages = new Map(await Promise.all(routes.map(async (route) => [route, await readFile(htmlFile(route), "utf8")])));
 const attrs = (tag) => Object.fromEntries([...tag.matchAll(/([\w:-]+)="([^"]*)"/g)].map((m) => [m[1], m[2].replaceAll("&amp;", "&")]));
 const tags = (html, name) => [...html.matchAll(new RegExp(`<${name}\\b[^>]*>`, "gi"))].map((m) => attrs(m[0]));
-const homepageTitle = "Service Pompa Air & Bor Sumur Jaksel & Cinere | Tirta Agung Teknik";
-const homepageDescription = "Service pompa air, bor sumur, dan instalasi pipa di Jakarta Selatan, Cinere, dan Cirendeu. Diagnosis dulu, estimasi dijelaskan sebelum pengerjaan.";
-const serviceAreas = ["Jakarta Selatan", "Jagakarsa", "Ciganjur", "Cinere", "Cirendeu"];
+const homepageTitle = "Service Pompa Air & Bor Sumur Cirendeu | Tirta Agung Teknik";
+const homepageDescription = "Service pompa atau mesin air di Cirendeu, termasuk Sanyo dan Shimizu. Diagnosis dulu; estimasi dijelaskan sebelum pengerjaan.";
+const serviceAreas = ["Cirendeu"];
+const unconfirmedAreas = ["Jakarta Selatan", "Jagakarsa", "Ciganjur", "Cinere"];
 const legacyAreas = ["Depok", "Bogor", "Sawangan", "Bojongsari", "Pancoran Mas", "Beji", "Limo", "Bekasi", "Tangerang"];
 const textContent = (html) => html
+  .replace(/<!--[\s\S]*?-->/g, "")
   .replace(/<script\b[^>]*>[\s\S]*?<\/script>/gi, " ")
   .replace(/<style\b[^>]*>[\s\S]*?<\/style>/gi, " ")
   .replace(/<[^>]*>/g, " ")
@@ -39,22 +41,65 @@ test("homepage metadata uses the official coverage and exact approved copy", () 
     assert.equal(matches.length, 1, key);
     assert.equal(matches[0].content, expected, key);
   }
-  for (const area of legacyAreas) {
-    assert.ok(!html.includes(area), `Legacy area in homepage export: ${area}`);
+  for (const area of [...legacyAreas, ...unconfirmedAreas, "Cireundeu"]) {
+    assert.ok(!html.includes(area), `Unconfirmed or legacy area in homepage export: ${area}`);
   }
 });
 
-test("homepage content omits location names while keeping the service heading", () => {
+test("homepage shows only confirmed technician coverage and preserves the service heading", () => {
   const html = pages.get("/");
   const h1 = html.match(/<h1\b[^>]*>([\s\S]*?)<\/h1>/i)?.[1];
   assert.equal(textContent(h1 || ""), "Service Pompa Air & Bor Sumur");
   const body = html.match(/<body\b[^>]*>([\s\S]*?)<\/body>/i)?.[1];
   assert.ok(body);
   const content = textContent(body);
-  for (const area of [...serviceAreas, "Jaksel", ...legacyAreas]) {
-    assert.ok(!content.includes(area), `Location in visible content: ${area}`);
+  for (const area of [...unconfirmedAreas, "Jaksel", ...legacyAreas]) {
+    assert.ok(!content.includes(area), `Unconfirmed location in visible content: ${area}`);
   }
-  assert.ok(!content.includes("Area layanan:"));
+  const hero = html.match(/<section\b[^>]*id="hero"[^>]*>([\s\S]*?)<\/section>/i)?.[1];
+  const footer = html.match(/<footer\b[^>]*>([\s\S]*?)<\/footer>/i)?.[1];
+  for (const section of [hero, footer]) {
+    assert.match(textContent(section || ""), /Area layanan: Cirendeu\./);
+  }
+});
+
+test("service copy describes pump symptoms and confirmed brands without new pages or logos", () => {
+  const html = pages.get("/");
+  const hero = textContent(html.match(/<section\b[^>]*id="hero"[^>]*>([\s\S]*?)<\/section>/i)?.[1] || "");
+  for (const symptom of ["mesin air", "tidak menyala", "air tidak naik", "tekanan lemah", "berisik"]) {
+    assert.ok(hero.includes(symptom), symptom);
+  }
+  const services = html.match(/<section\b[^>]*id="layanan"[^>]*>([\s\S]*?)<\/section>/i)?.[1] || "";
+  const headings = [...services.matchAll(/<h3\b[^>]*>([\s\S]*?)<\/h3>/gi)].map((match) => textContent(match[1]));
+  assert.deepEqual(headings, ["Service Pompa Air", "Jasa Bor Sumur", "Instalasi Pompa & Pipa", "Solusi Sistem Air"]);
+  const pumpCard = textContent(services.match(/<article\b[^>]*>([\s\S]*?)<\/article>/i)?.[1] || "");
+  for (const term of ["mesin air", "jet pump", "Sanyo dan Shimizu", "pengecekan teknisi"]) {
+    assert.ok(pumpCard.includes(term), term);
+  }
+  const faq = html.match(/<section\b[^>]*id="faq"[^>]*>([\s\S]*?)<\/section>/i)?.[1] || "";
+  assert.equal(tags(faq, "details").length, 4);
+  assert.ok(textContent(faq).includes("Apakah menerima service pompa air Sanyo dan Shimizu?"));
+  assert.ok(textContent(faq).includes("bukan afiliasi resmi dengan produsen"));
+  assert.ok(!tags(html, "img").some((image) => /sanyo|shimizu/i.test(`${image.src} ${image.alt}`)));
+});
+
+test("contact destinations and accessible WhatsApp labels are preserved", () => {
+  const html = pages.get("/");
+  const links = tags(html, "a");
+  const whatsapp = links.filter((link) => link.href?.startsWith("https://wa.me/"));
+  assert.equal(whatsapp.length, 8);
+  for (const link of whatsapp) {
+    assert.equal(new URL(link.href).pathname, "/62818970473");
+    assert.equal(link.target, "_blank");
+    assert.ok(link.rel.includes("noopener"));
+  }
+  const consultationUrl = "https://wa.me/62818970473?text=Halo%20Tirta%20Agung%20Teknik,%20saya%20ingin%20konsultasi%20tentang%20masalah%20air.";
+  assert.equal(whatsapp.filter((link) => link.href === consultationUrl).length, 2);
+  const telephone = links.filter((link) => link.href?.startsWith("tel:"));
+  assert.equal(telephone.length, 2);
+  assert.ok(telephone.every((link) => link.href === "tel:0818970473"));
+  const nav = html.match(/<nav\b[^>]*>([\s\S]*?)<\/nav>/i)?.[1] || "";
+  assert.equal(tags(nav, "a").find((link) => link.href?.startsWith("https://wa.me/"))?.["aria-label"], "Konsultasi via WhatsApp");
 });
 
 test("each page identifies the primary domain without legacy metadata", () => {
@@ -80,6 +125,9 @@ test("structured data points to one business on the primary domain", () => {
     assert.equal(business?.url, `${origin}/`);
     assert.equal(business?.description, homepageDescription);
     assert.deepEqual(business?.areaServed, serviceAreas.map((name) => ({ "@type": "Place", name })));
+    for (const key of ["address", "geo", "openingHours", "openingHoursSpecification", "aggregateRating", "priceRange"]) {
+      assert.ok(!(key in business), `Unverified business detail: ${key}`);
+    }
     if (route !== "/") {
       const service = data.find((d) => d["@type"] === "Service");
       assert.equal(service?.url, origin + route);

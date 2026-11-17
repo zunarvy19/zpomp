@@ -6,19 +6,21 @@ export const site = {
 
 export const business = {
   serviceArea: [
-    { name: "Jakarta Selatan", shortName: "Jaksel", neighborhoods: ["Jagakarsa", "Ciganjur"] },
-    { name: "Cinere", shortName: "Cinere", neighborhoods: [] },
-    { name: "Cirendeu", shortName: "Cirendeu", neighborhoods: [] },
+    // BUTUH KONFIRMASI: campaign targeting and geography alone do not confirm coverage.
+    { name: "Jakarta Selatan", neighborhoods: ["Jagakarsa", "Ciganjur"], confirmed: false },
+    { name: "Cinere", neighborhoods: [], confirmed: false },
+    { name: "Cirendeu", neighborhoods: [], confirmed: true },
   ],
 };
 
-const serviceAreaText = new Intl.ListFormat("id", { style: "long", type: "conjunction" })
-  .format(business.serviceArea.map(({ name }) => name));
+const confirmedServiceAreas = business.serviceArea.filter(({ confirmed }) => confirmed);
+
+export const serviceAreaText = new Intl.ListFormat("id", { style: "long", type: "conjunction" })
+  .format(confirmedServiceAreas.map(({ name }) => name));
 
 export const homepageSeo = {
-  // Keep the title compact; the description and schema include every service area.
-  title: `Service Pompa Air & Bor Sumur ${business.serviceArea.slice(0, 2).map(({ shortName }) => shortName).join(" & ")} | ${site.name}`,
-  description: `Service pompa air, bor sumur, dan instalasi pipa di ${serviceAreaText}. Diagnosis dulu, estimasi dijelaskan sebelum pengerjaan.`,
+  title: `Service Pompa Air & Bor Sumur${serviceAreaText ? ` ${serviceAreaText}` : ""} | ${site.name}`,
+  description: `Service pompa atau mesin air${serviceAreaText ? ` di ${serviceAreaText}` : ""}, termasuk Sanyo dan Shimizu. Diagnosis dulu; estimasi dijelaskan sebelum pengerjaan.`,
 };
 
 export function absoluteUrl(path = "/") {
@@ -36,7 +38,7 @@ export const businessSchema = {
   logo: absoluteUrl("/images/tat-logo.png"),
   image: absoluteUrl("/images/servis-pompa-jetpump-1280.webp"),
   description: homepageSeo.description,
-  areaServed: business.serviceArea
+  areaServed: confirmedServiceAreas
     .flatMap(({ name, neighborhoods }) => [name, ...neighborhoods])
     .map((name) => ({ "@type": "Place", name })),
 };

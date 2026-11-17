@@ -57,11 +57,18 @@ The legacy Depok landing page remains disabled: its source is preserved as
 sitemap entry are excluded. Do not restore this route without reviewing the
 current service coverage and SEO strategy. No location-specific pages are published.
 
-- `business.serviceArea` in `lib/site.ts` is the source of truth for confirmed
-  coverage: Jakarta Selatan (including Jagakarsa, Ciganjur, and nearby areas),
-  Cinere, and Cirendeu. Homepage SEO copy and structured data derive from it.
-- Location names appear only in metadata and structured data, not homepage
-  content or testimonial labels. Keep the service-focused H1 free of locations.
+- `business.serviceArea` in `lib/site.ts` is the source of truth for coverage.
+  Only entries marked `confirmed: true` appear in the hero, footer, metadata,
+  and structured data. Cirendeu is explicitly confirmed by the owner.
+- Jakarta Selatan (with Jagakarsa and Ciganjur listed under it) and Cinere are
+  **BUTUH KONFIRMASI** (`confirmed: false`), not public coverage claims. Geographic
+  membership and advertising targets do not establish operational coverage.
+  Confirm exact neighborhoods before publishing a broader city-wide claim.
+- Keep the service-focused H1 free of locations. The hero and footer describe
+  technician coverage, not a physical office address. No office address is confirmed.
+- Sanyo and Shimizu repairs are confirmed services, not official manufacturer
+  affiliations. Mention them naturally in service copy and the existing FAQ;
+  do not add manufacturer logos or claim authorized service-center status.
 
 - Each indexable page declares its own canonical URL. New pages must also be
   added to `src/app/sitemap.ts` and included in `check:seo`.
