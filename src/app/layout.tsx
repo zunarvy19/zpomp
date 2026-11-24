@@ -40,7 +40,7 @@ export const metadata: Metadata = {
     images: ["/images/og-image.png"],
   },
   icons: {
-    icon: "/images/tat-logo.png",
+    icon: "/images/tat-logo-120.webp",
   },
 };
 

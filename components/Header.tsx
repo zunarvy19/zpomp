@@ -17,10 +17,11 @@ export default function Header() {
       <div className="container mx-auto flex items-center justify-between gap-3 px-4 py-3 sm:px-6">
         <Link href="/" aria-label="Beranda Tirta Agung Teknik" className="flex min-w-0 items-center gap-2 sm:gap-3">
           <Image
-            src="/images/tat-logo.png"
+            src="/images/tat-logo-120.webp"
             alt="Logo Tirta Agung Teknik"
             width={40}
             height={40}
+            loading="eager"
             unoptimized
             className="rounded-lg"
           />

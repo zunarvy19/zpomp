@@ -40,7 +40,8 @@ yarn-error.log*
 *.tsbuildinfo
 next-env.d.ts
 
-# Responsive assets generated from the source photos before dev/build.
+# WebP assets generated from source images before dev/build.
+/public/images/tat-logo-120.webp
 /public/images/*-640.webp
 /public/images/*-960.webp
 /public/images/*-1280.webp

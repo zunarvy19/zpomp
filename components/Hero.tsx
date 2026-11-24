@@ -2,10 +2,7 @@
 
 import ResponsiveImage from "@/components/ResponsiveImage";
 import { ArrowRight, Check, MessageCircle, Phone, ScanSearch } from "lucide-react";
-import { motion, useReducedMotion } from "framer-motion";
 import { trackContactClick } from "@/lib/analytics";
-import { revealMotion } from "@/lib/motion";
-// import { serviceAreaText } from "@/lib/site";
 
 const assurances = [
   "Diagnosis sebelum tindakan",
@@ -14,8 +11,6 @@ const assurances = [
 ];
 
 export default function Hero() {
-  const reduceMotion = Boolean(useReducedMotion());
-
   return (
     <section id="hero" className="relative overflow-hidden bg-[#F3F8FB]">
       <div className="pointer-events-none absolute -left-40 top-32 h-80 w-80 rounded-full bg-[#27A9E1]/10 blur-3xl" />
@@ -23,35 +18,31 @@ export default function Hero() {
 
       <div className="relative mx-auto grid min-h-[700px] max-w-7xl items-center gap-14 px-5 py-16 sm:px-6 lg:grid-cols-[1.06fr_0.94fr] lg:gap-20 lg:py-20">
         <div className="max-w-3xl">
-          <motion.p
-            {...revealMotion("left", 0, reduceMotion)}
+          <p
             className="flex items-center gap-3 text-[11px] font-extrabold uppercase tracking-[0.22em] text-[#1479C9] sm:text-xs"
           >
             <span className="h-2 w-2 rounded-full bg-[#F59E0B]" />
             Jasa pompa & sistem air
-          </motion.p>
+          </p>
 
-          <motion.h1
-            {...revealMotion("left", 0.08, reduceMotion)}
+          <h1
             className="mt-6 text-[2.7rem] font-extrabold leading-[1.03] tracking-[-0.055em] text-[#071C2E] sm:text-6xl lg:text-[4.25rem]"
           >
             Service Pompa Air &amp;{" "}
             <span className="block text-[#1479C9]">Bor Sumur</span>
-          </motion.h1>
+          </h1>
 
-          <motion.p
-            {...revealMotion("left", 0.16, reduceMotion)}
+          <p
             className="mt-7 max-w-2xl text-base leading-8 text-[#617080] sm:text-lg"
           >
             Teknisi menangani pompa atau mesin air yang tidak menyala,
             air tidak naik, tekanan lemah, atau berisik.
-            {/* {serviceAreaText && <span className="block">Area layanan: {serviceAreaText}.</span>} */}
-          </motion.p>
+          </p>
+          <p className="mt-3 max-w-2xl text-sm leading-6 text-[#31485C] sm:text-base">
+            Kirim lokasi Anda lewat WhatsApp untuk cek jangkauan dan jadwal teknisi.
+          </p>
 
-          <motion.div
-            {...revealMotion("up", 0.24, reduceMotion, 20)}
-            className="mt-8 flex flex-col gap-3 sm:flex-row"
-          >
+          <div className="mt-6 flex flex-col gap-3 sm:flex-row">
             <a
               href="https://wa.me/62818970473?text=Halo%20Tirta%20Agung%20Teknik,%20saya%20ingin%20konsultasi%20tentang%20masalah%20air."
               target="_blank"
@@ -73,12 +64,9 @@ export default function Hero() {
               <Phone size={18} />
               <span data-google-phone-number="">0818-970-473</span>
             </a>
-          </motion.div>
+          </div>
 
-          <motion.div
-            {...revealMotion("up", 0.32, reduceMotion, 18)}
-            className="mt-9 grid gap-3 border-t border-[#0B2845]/10 pt-6 sm:grid-cols-3"
-          >
+          <div className="mt-9 grid gap-3 border-t border-[#0B2845]/10 pt-6 sm:grid-cols-3">
             {assurances.map((item) => (
               <span key={item} className="flex items-start gap-2 text-xs font-semibold leading-5 text-[#31485C]">
                 <span className="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-[#DFF3FB] text-[#1479C9]">
@@ -87,13 +75,10 @@ export default function Hero() {
                 {item}
               </span>
             ))}
-          </motion.div>
+          </div>
         </div>
 
-        <motion.div
-          {...revealMotion("right", 0.14, reduceMotion, 36)}
-          className="relative mx-auto w-full max-w-[560px] pb-12 lg:pb-8"
-        >
+        <div className="relative mx-auto w-full max-w-[560px] pb-12 lg:pb-8">
           <div className="absolute -right-6 top-8 h-[88%] w-[82%] rounded-[2rem] bg-[#0B2845] sm:-right-8" />
           <div className="absolute -right-12 top-0 hidden h-32 w-32 rounded-full border-[24px] border-[#27A9E1]/15 sm:block" />
 
@@ -116,8 +101,7 @@ export default function Hero() {
             </figcaption>
           </figure>
 
-          <motion.div
-            {...revealMotion("left", 0.42, reduceMotion, 20)}
+          <div
             className="absolute -left-1 top-10 max-w-[210px] rounded-2xl border border-[#DCE5EC] bg-white p-4 shadow-[0_18px_45px_rgba(7,28,46,0.12)] sm:-left-5 sm:p-5"
           >
             <span className="flex h-9 w-9 items-center justify-center rounded-xl bg-[#DFF3FB] text-[#1479C9]">
@@ -125,8 +109,8 @@ export default function Hero() {
             </span>
             <p className="mt-4 text-sm font-extrabold leading-5 text-[#071C2E]">Pengecekan, bukan tebakan.</p>
             <p className="mt-1 text-[11px] leading-4 text-[#617080]">Mulai dari gejala yang Anda lihat.</p>
-          </motion.div>
-        </motion.div>
+          </div>
+        </div>
       </div>
     </section>
   );

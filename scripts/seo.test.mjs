@@ -11,10 +11,9 @@ const htmlFile = (route) => resolve(root, route === "/" ? "index.html" : `${rout
 const pages = new Map(await Promise.all(routes.map(async (route) => [route, await readFile(htmlFile(route), "utf8")])));
 const attrs = (tag) => Object.fromEntries([...tag.matchAll(/([\w:-]+)="([^"]*)"/g)].map((m) => [m[1], m[2].replaceAll("&amp;", "&")]));
 const tags = (html, name) => [...html.matchAll(new RegExp(`<${name}\\b[^>]*>`, "gi"))].map((m) => attrs(m[0]));
-const homepageTitle = "Service Pompa Air & Bor Sumur Cirendeu | Tirta Agung Teknik";
-const homepageDescription = "Service pompa atau mesin air di Cirendeu, termasuk Sanyo dan Shimizu. Diagnosis dulu; estimasi dijelaskan sebelum pengerjaan.";
-const serviceAreas = ["Cirendeu"];
-const unconfirmedAreas = ["Jakarta Selatan", "Jagakarsa", "Ciganjur", "Cinere"];
+const homepageTitle = "Service Pompa Air & Bor Sumur | Tirta Agung Teknik";
+const homepageDescription = "Service pompa atau mesin air panggilan. Diagnosis dulu, estimasi dijelaskan sebelum pengerjaan.";
+const unconfirmedAreas = ["Jakarta Selatan", "Jagakarsa", "Ciganjur", "Cinere", "Cirendeu", "Cireundeu"];
 const legacyAreas = ["Depok", "Bogor", "Sawangan", "Bojongsari", "Pancoran Mas", "Beji", "Limo", "Bekasi", "Tangerang"];
 const textContent = (html) => html
   .replace(/<!--[\s\S]*?-->/g, "")
@@ -41,12 +40,12 @@ test("homepage metadata uses the official coverage and exact approved copy", () 
     assert.equal(matches.length, 1, key);
     assert.equal(matches[0].content, expected, key);
   }
-  for (const area of [...legacyAreas, ...unconfirmedAreas, "Cireundeu"]) {
+  for (const area of [...legacyAreas, ...unconfirmedAreas]) {
     assert.ok(!html.includes(area), `Unconfirmed or legacy area in homepage export: ${area}`);
   }
 });
 
-test("homepage shows only confirmed technician coverage and preserves the service heading", () => {
+test("homepage shows the service heading and coverage guidance on first render", () => {
   const html = pages.get("/");
   const h1 = html.match(/<h1\b[^>]*>([\s\S]*?)<\/h1>/i)?.[1];
   assert.equal(textContent(h1 || ""), "Service Pompa Air & Bor Sumur");
@@ -58,9 +57,10 @@ test("homepage shows only confirmed technician coverage and preserves the servic
   }
   const hero = html.match(/<section\b[^>]*id="hero"[^>]*>([\s\S]*?)<\/section>/i)?.[1];
   const footer = html.match(/<footer\b[^>]*>([\s\S]*?)<\/footer>/i)?.[1];
-  for (const section of [hero, footer]) {
-    assert.match(textContent(section || ""), /Area layanan: Cirendeu\./);
-  }
+  assert.ok(hero);
+  assert.doesNotMatch(hero, /\bstyle="[^"]*\bopacity:\s*0\s*[;"]/i);
+  assert.match(textContent(hero), /Kirim lokasi Anda lewat WhatsApp untuk cek jangkauan dan jadwal teknisi\. Konsultasi via WhatsApp/);
+  assert.match(textContent(footer || ""), /Kirim lokasi Anda untuk konfirmasi jangkauan dan jadwal teknisi\./);
 });
 
 test("service copy describes pump symptoms and confirmed brands without new pages or logos", () => {
@@ -124,7 +124,7 @@ test("structured data points to one business on the primary domain", () => {
     assert.equal(business?.["@id"], `${origin}/#business`);
     assert.equal(business?.url, `${origin}/`);
     assert.equal(business?.description, homepageDescription);
-    assert.deepEqual(business?.areaServed, serviceAreas.map((name) => ({ "@type": "Place", name })));
+    assert.deepEqual(business?.areaServed, []);
     for (const key of ["address", "geo", "openingHours", "openingHoursSpecification", "aggregateRating", "priceRange"]) {
       assert.ok(!(key in business), `Unverified business detail: ${key}`);
     }
@@ -174,6 +174,10 @@ test("responsive images exist in the static export and hero is compressed", asyn
   }
   const hero = await stat(resolve(root, "images/hero-technician-ai-v1-1280.webp"));
   assert.ok(hero.size < 200_000, `Hero unexpectedly large: ${hero.size}`);
+  const logo = tags(pages.get("/"), "img").find((img) => img.alt === "Logo Tirta Agung Teknik");
+  assert.equal(logo?.src, "/images/tat-logo-120.webp");
+  const logoFile = await stat(resolve(root, logo.src.slice(1)));
+  assert.ok(logoFile.size < 10_000, `Header logo unexpectedly large: ${logoFile.size}`);
 });
 
 test("unknown routes have a dedicated non-indexable error document", async () => {
